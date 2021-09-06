@@ -1,0 +1,101 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light background-nav">
+    <div class="container-fluid">
+        <a class="navbar-brand d-none d-md-block" href="{% url 'home' %}">
+            <img src="{% static 'images/unetto-favicon32.png' %}" alt="" width="30" height="30" class="d-inline-block align-text-top">
+            Unetto
+        </a>
+
+      <button class="navbar-toggler order-first" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-inline-block">
+        <a class="nav-link d-inline-block d-md-none pt-2 align-top" href="{% url 'home' %}" title="Shopping cart" aria-label="View shopping cart">
+            <div >
+                <img src="{% static 'images/unetto-favicon32.png' %}" width="30" height="30" class="d-inline-block align-text-top" alt="">
+            </div>
+        </a>
+    </div>
+
+<!-- search -->
+    <div class="d-inline-block order-md-4 dropdown">
+      
+        <a class="nav-link d-inline-block py-3 link-success" href="#" role="button" id="site-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-search nav-item"></i>
+        </a>
+      
+        <ul class="dropdown-menu dropdown-menu-end dropdown-search" aria-labelledby="site-search">
+          <li>
+            <form class="form" method="GET" action="">
+            <div class="input-group w-100">
+                <input class="form-control search-custom" type="text" name="q" placeholder="Search">
+                <div class="input-group-append">
+                    <button class="form-control btn search-custom search-custom-btn" type="submit">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+          </li>
+        </ul>
+      </div>
+
+<!-- shopping card -->
+        <div class="d-inline-block order-md-5">
+        <a class="nav-link d-inline-block py-0 align-top link-success" href="" title="Shopping cart" aria-label="View shopping cart">
+            <div class="text-center">
+                <i class="fas fa-shopping-basket"></i>
+                
+                
+                <p class="m-0">$0.00</p>
+                               
+            </div>
+        </a>
+        
+    </div>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="">Full Menu</a></li>
+              <li><a class="dropdown-item" href="">Pizza</a></li>
+              <li><a class="dropdown-item" href="">Lasagna</a></li>
+              <li><a class="dropdown-item" href="">Drink</a></li>
+              <li><a class="dropdown-item" href="">Dessert</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="">Deal</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Register</a></li>              
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Log In</a></li>
+            </ul>
+          </li>          
+        </ul>
+      </div>
+      
+    </div>
+</nav>
