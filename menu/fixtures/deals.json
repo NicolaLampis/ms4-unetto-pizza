@@ -1,0 +1,26 @@
+[
+    {
+        "model": "menu.deal",
+        "pk": 1,
+        "fields": {
+            "name": "deal_of_the_week",
+            "friendly_name": "Deal of the week"
+    }
+    },
+    {
+        "model": "menu.deal",
+        "pk": 2,
+        "fields": {
+            "name": "unetto_deal",
+            "friendly_name": "Unetto Deal"
+        }
+    },
+    {
+        "model": "menu.deal",
+        "pk": 3,
+        "fields": {
+            "name": "special_deal",
+            "friendly_name": "Special Deal"
+        }
+    }    
+]

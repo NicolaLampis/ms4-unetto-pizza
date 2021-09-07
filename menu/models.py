@@ -36,7 +36,7 @@ class Product(models.Model):
         null=True,
         blank=True,
         on_delete=models.SET_NULL)
-    allergens = models.ManyToManyField('Allergen')
+    allergens = models.ManyToManyField('Allergen', blank=True)
 
     def __str__(self):
         return self.name

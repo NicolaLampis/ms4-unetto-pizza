@@ -1,0 +1,42 @@
+[
+    {
+      "model": "menu.category",
+      "pk": 1,
+      "fields": {
+        "name": "pizza",
+        "friendly_name": "Pizza"
+      }
+    },
+    {
+      "model": "menu.category",
+      "pk": 2,
+      "fields": {
+        "name": "lasagna",
+        "friendly_name": "Lasagna"
+      }
+    },    
+    {
+        "model": "menu.category",
+        "pk": 3,
+        "fields": {
+          "name": "drink",
+          "friendly_name": "Drink"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 4,
+        "fields": {
+          "name": "dessert",
+          "friendly_name": "Dessert"
+        }
+    },
+    {
+        "model": "menu.category",
+        "pk": 5,
+        "fields": {
+          "name": "full_menu",
+          "friendly_name": "Full Menu"
+        }
+    }
+]

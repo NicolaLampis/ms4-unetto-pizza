@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<p>all products</p>
+{% endblock %}
+
+{% block content %}
+{% for p in products %}
+{{ p }}
+{{ p.image }}
+{% endfor %}
+
+{% endblock %}

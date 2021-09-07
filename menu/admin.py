@@ -20,7 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'favourite',
         'deal',
-        'allergens',
     )
 
 

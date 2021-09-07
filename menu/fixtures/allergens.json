@@ -1,0 +1,56 @@
+[
+    {
+        "model": "menu.allergen",
+        "pk": 1,
+        "fields": {
+            "name": "milk",
+            "friendly_name": "Milk",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk"
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 2,
+        "fields": {
+            "name": "eggs",
+            "friendly_name": "Eggs",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg"
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 3,
+        "fields": {
+            "name": "fish",
+            "friendly_name": "Fish",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/fish"
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 4,
+        "fields": {
+            "name": "tree_nuts",
+            "friendly_name": "Tree Nuts",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut"
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 5,
+        "fields": {
+            "name": "peanuts",
+            "friendly_name": "Peanuts",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/peanut"
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 6,
+        "fields": {
+            "name": "wheat",
+            "friendly_name": "Wheat",
+            "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/wheat"
+        }
+    }
+]
