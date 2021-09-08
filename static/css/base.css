@@ -2,9 +2,10 @@
     --body-background-light: rgb(241, 241, 234);
     --text-color-dark: rgb(51, 51, 51);
     --border-radius-custom: 12px;
+    --card-color: rgb(255, 255, 255);
     --card-color-highlight: rgb(230, 225, 200);
-    --color-accent: #DF590D;
-    
+    --card-color-categories: rgba(76, 76, 69, 0.1);
+    --color-accent: #DF590D;    
 }
 
 body {
@@ -14,6 +15,10 @@ body {
     color: var(--text-color-dark);
     min-height: 100vh;
     position: relative;
+}
+
+main {
+    min-height: calc(100vh - 72px);    
 }
 
 .main {
@@ -28,11 +33,31 @@ body {
     font-family: "Caveat", sans-serif;
 }
 
-.banner-site {
-    border-radius: var(--border-radius-custom);
+.text-color {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+}
+
+.favourite {
+    padding: 6px 9px 6px 6px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--color-accent);    
+}
+
+a {
+    color: var(--text-color-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-accent);
 }
 
 /* ---------- Navbar ---------- */
+
 .background-nav {
     background-color: var(--body-background-light);
 }
@@ -75,6 +100,23 @@ body {
 
 /* ---------- Buttons ---------- */
 
+.btn-custom-normal {
+    border-color: var(--text-color-dark);
+    border-radius: var(--border-radius-custom);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-width: 2px;
+    font-weight: 600;
+}
+
+.btn-custom-normal:hover {
+    border-color: var(--text-color-dark);
+    border-radius: var(--border-radius-custom);
+    background-color: var(--text-color-dark);
+    border-width: 2px;
+    font-weight: 600;
+    color: white;
+}
+
 .btn-custom-accent {
     border-color: var(--color-accent);
     border-radius: var(--border-radius-custom);
@@ -83,6 +125,8 @@ body {
     font-weight: 600;
     color: white;
 }
+
+/* ---------- Cards ---------- */
 
 .card-home {
     background-color: rgba(241, 241, 234, 0.5);
@@ -93,3 +137,21 @@ body {
 .card-highlight {
     background-color: var(--card-color-highlight);
 }
+
+.card-product, .card-categories {
+    border-radius: var(--border-radius-custom);    
+    padding: 9px 9px 12px 9px;
+}
+
+.card-product {
+    background-color: var(--card-color);
+}
+
+.card-categories {    
+    background-color: var(--card-color-categories); 
+}
+
+.banner-site {
+    border-radius: var(--border-radius-custom);
+}
+

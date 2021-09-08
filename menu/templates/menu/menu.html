@@ -2,13 +2,91 @@
 {% load static %}
 
 {% block page_header %}
-<p>all products</p>
+<!-- banner free delivery threshold -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $</h5>                
+        </div>            
+    </div>
+</div>
+
+<!-- sub menu for categories -->
+<div class="container">
+    <div class="row gx-0">
+        <div class="col-12 text-center py-2 my-4 card-categories">
+            <h3>CATEGORIES</h3>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Full Menu</a>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Pizza</a>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Lasagna</a>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Drink</a>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Dessert</a>
+            <a class="btn btn-custom-normal mb-2" href="" role="button">Deal</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">        
+    <div class="row">
+        <div class="col text-center my-3">
+            <h2>MENU</h2>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
-{% for p in products %}
-{{ p }}
-{{ p.image }}
-{% endfor %}
+
+    {% if query %}
+        <h4 class="mb-3 d-inline-block">Search: {{ query }}</h4>
+    {% endif %}
+
+
+<div class="container mb-4">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
+            <div class="card h-100 card-product border-0">
+
+                {% if product.image %}
+                <a href="">
+                    <img class="card-img-top img-fluid p-3" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+                {% else %}
+                <a href="">
+                    <img class="card-img-top img-fluid p-3" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                </a>
+                {% endif %}
+
+                {% if product.favourite %}
+                <a class="favourite btn btn-floating"><i class="fas fa-heart mr-1"></i></a>
+                {% else %}
+                <a class="favourite btn btn-floating"><i class="far fa-heart mr-1"></i></a>
+                {% endif %}
+
+                <div class="card-body pb-0">
+                    <p class="mb-2"><strong>{{ product.name }}</strong></p>
+                </div>
+                <div class="card-footer bg-transparent pt-0 border-0 text-left">
+                    <div class="row">
+                        <div class="col">
+                            <small class="text-left text-truncate d-block mb-2">{{ product.description }}</small>
+                            {% if product.category %}
+                            <p class="small mb-1">
+                                <a class="text-muted" href="">
+                                    <i class="fas fa-hashtag"></i>{{ product.category.friendly_name }}
+                                </a>
+                            </p>
+                            {% endif %}
+                            <p class="text-color mb-0 text-left font-weight-bold">$ {{ product.price}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 
 {% endblock %}

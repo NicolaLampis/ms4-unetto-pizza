@@ -72,8 +72,7 @@
             "name": "Prosciutto(Family) + Coca Cola",
             "description": "Pizza Prosciutto(Family Size): backed ham, mozzarella cheese, tomato sauce. A can of Coca Cola",
             "favourite": false,
-            "price": "13.00",
-            "image": "DPK005.png",
+            "price": "13.00",            
             "deal": "2",
             "allergens": [
                 1,
@@ -101,8 +100,7 @@
             "name": "Peroni",
             "description": "Beer, 0.33 cl, ALC 6% VOL",
             "favourite": false,
-            "price": "3.50",
-            "image": "DPK007.png" 
+            "price": "3.50"            
         }
     },
     {
