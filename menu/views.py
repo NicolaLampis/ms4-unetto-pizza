@@ -1,5 +1,5 @@
 from django.shortcuts import (
-        render, redirect, reverse)
+        render, redirect, reverse, get_object_or_404)
 from .models import Product, Category, Deal
 from django.contrib import messages
 from django.db.models import Q
@@ -24,6 +24,7 @@ def all_products(request):
                 products = products.annotate(lower_name=Lower('name'))
             if sortkey == 'favourite':
                 sortkey = 'favourite'
+                sortkey = f'-{sortkey}'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -60,3 +61,13 @@ def all_products(request):
         'current_sorting': current_sorting,
     }
     return render(request, 'menu/menu.html', context)
+
+
+def product_detail(request, id):
+    """A view to show individual product details"""
+    product = get_object_or_404(Product, pk=id)
+
+    context = {
+        'product': product,
+    }
+    return render(request, 'menu/product_detail.html', context)

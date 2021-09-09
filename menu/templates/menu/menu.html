@@ -53,7 +53,8 @@
         <select id="sort-selector" class="form-select form-select-sm custom-border mb-4" aria-label=".form-select-sm sorting">
             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>        
+            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+            <option value="favourite" {% if current_sorting == 'favourite' %}selected{% endif %}>Favourite</option>        
             <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
             <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
         </select>
@@ -65,11 +66,11 @@
             <div class="card h-100 card-product border-0">
 
                 {% if product.image %}
-                <a href="">
+                <a href="{% url 'product_detail' product.id %}">
                     <img class="card-img-top img-fluid p-3" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
                 {% else %}
-                <a href="">
+                <a href="{% url 'product_detail' product.id %}">
                     <img class="card-img-top img-fluid p-3" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                 </a>
                 {% endif %}
@@ -81,7 +82,7 @@
                 {% endif %}
 
                 <div class="card-body pb-0">
-                    <a href="">
+                    <a href="{% url 'product_detail' product.id %}">
                         <p class="mb-2"><strong>{{ product.name }}</strong></p>
                     </a>
                 </div>
