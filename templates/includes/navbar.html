@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md navbar-light background-nav">
     <div class="container-fluid">
         <a class="navbar-brand d-none d-md-block" href="{% url 'home' %}">
-            <img src="{% static 'images/unetto-favicon32.png' %}" alt="" width="30" height="30" class="d-inline-block align-text-top">
+            <img src="{% static 'images/unetto-favicon32.png' %}" alt="unetto logo" width="30" height="30" class="d-inline-block align-text-top">
             Unetto
         </a>
 
@@ -14,7 +14,7 @@
       <div class="d-inline-block">
         <a class="nav-link d-inline-block d-md-none pt-2 align-top" href="{% url 'home' %}" title="Shopping cart" aria-label="View shopping cart">
             <div >
-                <img src="{% static 'images/unetto-favicon32.png' %}" width="30" height="30" class="d-inline-block align-text-top" alt="">
+                <img src="{% static 'images/unetto-favicon32.png' %}" width="30" height="30" class="d-inline-block align-text-top" alt="unetto logo">
             </div>
         </a>
     </div>
@@ -65,12 +65,12 @@
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="{% url 'menu' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Menu
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="">Full Menu</a></li>
-              <li><a class="dropdown-item" href="">Pizza</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}">Full Menu</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}?category=pizza">Pizza</a></li>
               <li><a class="dropdown-item" href="">Lasagna</a></li>
               <li><a class="dropdown-item" href="">Drink</a></li>
               <li><a class="dropdown-item" href="">Dessert</a></li>

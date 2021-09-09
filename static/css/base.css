@@ -21,7 +21,7 @@ main {
     min-height: calc(100vh - 72px);    
 }
 
-.main {
+.main-index {
     min-height: calc(100vh - 104px);
     display: flex;
     align-items: center;

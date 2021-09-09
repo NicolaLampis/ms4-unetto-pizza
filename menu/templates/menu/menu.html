@@ -16,12 +16,12 @@
     <div class="row gx-0">
         <div class="col-12 text-center py-2 my-4 card-categories">
             <h3>CATEGORIES</h3>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Full Menu</a>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Pizza</a>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Lasagna</a>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Drink</a>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Dessert</a>
-            <a class="btn btn-custom-normal mb-2" href="" role="button">Deal</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}" role="button">Full Menu</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=pizza" role="button">Pizza</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=lasagna" role="button">Lasagna</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=drink" role="button">Drink</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=dessert" role="button">Dessert</a>
+            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week" role="button">Deal</a>
         </div>
     </div>
 </div>
@@ -73,9 +73,13 @@
                             <small class="text-left text-truncate d-block mb-2">{{ product.description }}</small>
                             {% if product.category %}
                             <p class="small mb-1">
-                                <a class="text-muted" href="">
+                                <a class="text-muted" href="{% url 'menu' %}?category=pizza">
                                     <i class="fas fa-hashtag"></i>{{ product.category.friendly_name }}
+                                    
                                 </a>
+                                {% if product.deal %}
+                                <a class="text-muted" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">{{ product.deal.name }}</a>
+                                {% endif %}
                             </p>
                             {% endif %}
                             <p class="text-color mb-0 text-left font-weight-bold">$ {{ product.price}}</p>

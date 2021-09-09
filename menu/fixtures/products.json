@@ -68,7 +68,7 @@
         "model": "menu.product",
         "pk": 5,
         "fields": {
-            "category": 3,
+            "category": 1,
             "name": "Prosciutto(Family) + Coca Cola",
             "description": "Pizza Prosciutto(Family Size): backed ham, mozzarella cheese, tomato sauce. A can of Coca Cola",
             "favourite": false,
@@ -84,7 +84,7 @@
         "model": "menu.product",
         "pk": 6,
         "fields": {
-            "category": 4,
+            "category": 3,
             "name": "Coca Cola",
             "description": "Soft-drink soda, 0,33 cl, calories 140.",
             "favourite": true,
@@ -96,7 +96,7 @@
         "model": "menu.product",
         "pk": 7,
         "fields": {
-            "category": 4,
+            "category": 3,
             "name": "Peroni",
             "description": "Beer, 0.33 cl, ALC 6% VOL",
             "favourite": false,
@@ -107,7 +107,7 @@
         "model": "menu.product",
         "pk": 8,
         "fields": {
-            "category": 4,
+            "category": 3,
             "name": "S'Pellegrino",
             "description": "Water, 0.33 cl.",
             "favourite": false,
@@ -119,7 +119,7 @@
         "model": "menu.product",
         "pk": 9,
         "fields": {
-            "category": 5,
+            "category": 4,
             "name": "Tiramisu",
             "description": "rich layered Italian dessert made with delicate ladyfinger cookies, espresso, mascarpone cheese, eggs, sugar, Marsala wine, rum and cocoa powder.",
             "favourite": true,
@@ -130,7 +130,7 @@
         "model": "menu.product",
         "pk": 10,
         "fields": {
-            "category": 5,
+            "category": 4,
             "name": "Cheesecake",
             "description": "sweet dessert consisting of one layer of cream (cheese, eggs, sugar and lemon) and a bottom layer made from crushed cookies.",
             "favourite": false,
