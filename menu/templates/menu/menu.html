@@ -17,7 +17,7 @@
         <div class="col-12 text-center py-2 my-4 card-categories">
             <h3>CATEGORIES</h3>
             <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}" role="button">Full Menu</a>
-            <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=pizza" role="button">Pizza</a>
+            <a class="btn {% if current_category == 'pizza' %}btn-custom-accent{% else %}btn-custom-normal{% endif %} mb-2" href="{% url 'menu' %}?category=pizza" role="button">Pizza</a>
             <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=lasagna" role="button">Lasagna</a>
             <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=drink" role="button">Drink</a>
             <a class="btn btn-custom-normal mb-2" href="{% url 'menu' %}?category=dessert" role="button">Dessert</a>
@@ -28,7 +28,7 @@
 
 <div class="container">        
     <div class="row">
-        <div class="col text-center my-3">
+        <div class="col text-center my-2">
             <h2>MENU</h2>
         </div>
     </div>
@@ -37,12 +37,28 @@
 
 {% block content %}
 
-    {% if query %}
-        <h4 class="mb-3 d-inline-block">Search: {{ query }}</h4>
-    {% endif %}
-
-
 <div class="container mb-4">
+    <!-- Current Category or Search term -->
+    {% if current_category %}
+        {% for cat in current_category %}
+            <h6 class="mb-3 d-inline-block">Current Category: {{ cat.friendly_name }}</h6>
+        {% endfor %}
+    {% else %}
+        {% if search_term %}
+            <h6 class="mb-3 d-inline-block">Search: {{ search_term }}</h6>
+        {% endif %}
+    {% endif %}
+    <!-- Sorting options: Name, Price -->
+    <div class="sort-select-wrapper sort-options">
+        <select id="sort-selector" class="form-select form-select-sm custom-border mb-4" aria-label=".form-select-sm sorting">
+            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>        
+            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+        </select>
+    </div>
+    <!-- Product Cart -->
     <div class="row">
         {% for product in products %}
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -65,7 +81,9 @@
                 {% endif %}
 
                 <div class="card-body pb-0">
-                    <p class="mb-2"><strong>{{ product.name }}</strong></p>
+                    <a href="">
+                        <p class="mb-2"><strong>{{ product.name }}</strong></p>
+                    </a>
                 </div>
                 <div class="card-footer bg-transparent pt-0 border-0 text-left">
                     <div class="row">
@@ -93,4 +111,31 @@
 </div>
 
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- Sort Selector -->    
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
 {% endblock %}

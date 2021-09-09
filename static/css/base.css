@@ -155,3 +155,12 @@ a:hover {
     border-radius: var(--border-radius-custom);
 }
 
+/* ---------- Others ---------- */
+
+.sort-options {
+    max-width: 250px;
+}
+
+.custom-border {
+    border-radius: var(--border-radius-custom);
+}
