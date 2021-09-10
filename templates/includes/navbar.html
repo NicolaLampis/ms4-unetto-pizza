@@ -39,14 +39,14 @@
                     </button>
                 </div>
             </div>
-        </form>
+            </form>
           </li>
         </ul>
       </div>
 
 <!-- shopping card -->
         <div class="d-inline-block order-md-5">
-        <a class="nav-link d-inline-block py-0 align-top link-success" href="" title="Shopping cart" aria-label="View shopping cart">
+        <a class="nav-link d-inline-block py-0 align-top link-success" href="{% url 'view_cart' %}" title="Shopping cart" aria-label="View shopping cart">
             <div class="text-center">
                 <i class="fas fa-shopping-basket"></i>
                 
@@ -71,11 +71,11 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'menu' %}">Full Menu</a></li>
               <li><a class="dropdown-item" href="{% url 'menu' %}?category=pizza">Pizza</a></li>
-              <li><a class="dropdown-item" href="">Lasagna</a></li>
-              <li><a class="dropdown-item" href="">Drink</a></li>
-              <li><a class="dropdown-item" href="">Dessert</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}?category=lasagna">Lasagna</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}?category=drink">Drink</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}?category=dessert">Dessert</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="">Deal</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">Deal</a></li>
             </ul>
           </li>
           <li class="nav-item">
