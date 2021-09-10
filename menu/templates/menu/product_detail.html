@@ -28,7 +28,7 @@
 
 <div class="container">        
     <div class="row">
-        <div class="col text-center my-2">
+        <div class="col text-center mb-3">
             <h2>PRODUCT DETAIL</h2>
         </div>
     </div>
@@ -69,15 +69,24 @@
 
                 <!-- Category type -->
                 {% if product.category %}
-                    <p class="small mb-1">
+                    <p class="small">
                         <a class="text-muted" href="{% url 'menu' %}?category=pizza">
-                            <i class="fas fa-hashtag"></i>{{ product.category.friendly_name }}
-                            
+                            <i class="fas fa-hashtag"></i>{{ product.category.friendly_name }}                            
                         </a>
                         {% if product.deal %}
                         <a class="text-muted" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">{{ product.deal.name }}</a>
                         {% endif %}
                     </p>
+                {% endif %}
+
+                <!-- Allergens -->
+                {% if product.allergens.all %}
+                <ul class="list-inline mt-2">            
+                    <li class="list-inline-item"><span class="badge bg-secondary">Click Allergen for info</span></li>  
+                {% for allergen in product.allergens.all %}            
+                    <li class="list-inline-item"><a href="{{ allergen.data_url }}" target="_blank" class="badge border bg-light text-dark rounded-pill">{{ allergen.friendly_name }}</a></li>
+                {% endfor %}
+                </ul>
                 {% endif %}
 
                 <!-- Price -->

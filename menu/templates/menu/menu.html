@@ -48,7 +48,7 @@
             <h6 class="mb-3 d-inline-block">Search: {{ search_term }}</h6>
         {% endif %}
     {% endif %}
-    <!-- Sorting options: Name, Price -->
+    <!-- Sorting options: Name, Price, Favourites -->
     <div class="sort-select-wrapper sort-options">
         <select id="sort-selector" class="form-select form-select-sm custom-border mb-4" aria-label=".form-select-sm sorting">
             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
@@ -59,6 +59,11 @@
             <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
         </select>
     </div>
+
+    {% if not products %}
+        <h4 class="text-center mt-4 text-bold">Oops <i class="fas fa-exclamation"> </i></h4>
+        <h5 class="text-center mt-4">No products were found matching your query...</h5>
+    {% endif %}
     <!-- Product Cart -->
     <div class="row">
         {% for product in products %}
@@ -83,7 +88,7 @@
 
                 <div class="card-body pb-0">
                     <a href="{% url 'product_detail' product.id %}">
-                        <p class="mb-2"><strong>{{ product.name }}</strong></p>
+                        <h5 class="mb-2"><strong>{{ product.name }}</strong></h5>
                     </a>
                 </div>
                 <div class="card-footer bg-transparent pt-0 border-0 text-left">
