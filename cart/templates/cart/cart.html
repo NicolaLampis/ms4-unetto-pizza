@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<!-- banner free delivery threshold -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $ {{ delivery_threshold }}</h5>                
+        </div>            
+    </div>
+</div>
+
+<div class="container">        
+    <div class="row">
+        <div class="col text-center my-4">
+            <h2>CART</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% if cart_items %}
+<!-- Cart Detail -->
+<div class="container justify-content-center mb-4">    
+    <div class="row gx-2 mb-4">        
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 card-product pt-4 card-product">
+            {% for cart_item in cart_items %}
+            <div class="row mx-1">
+                <!-- image -->
+                {% if cart_items.product.image %}
+                <div class="col-4 col-md-3">                    
+                    <img class="img-fluid px-3" src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">                        
+                </div>
+                {% else %}
+                <div class="col-4 col-md-3">                    
+                    <img class="img-fluid px-3" src="{{ MEDIA_URL }}noimage.png" alt="{{ cart_item.product.name }}">                        
+                </div>
+                {% endif %}
+                <!-- quantity -->
+                <div class="col-8 col-md-5 pb-2">
+                    <h5><strong>{{ cart_item.product.name }}</strong></h5>
+                    <form class="form-cart" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row pt-3">
+                            <label for="item-id-{{ cart_item.item_id }}">Quantity: </label>
+                            <input class="mb-3 custom-border border-1" type="number" name="quantity" value="{{ cart_item.quantity }}" min="1" max="60" data-id="{{ cart_item.item_id }}" id="item-id-{{ cart_item.item_id }}">
+                            <a class="text-success badge border bg-light rounded-pill" data-id="{{ cart_item.item_id }}">Update</a>                            
+                        </div>
+                    </form>
+                </div>
+                <!-- delete / price -->
+                <div class="col-12 col-md-4 text-end card-highlight custom-border pt-2">
+                    <a href="">Delete <i class="fas fa-times-circle"></i></a>
+                    <p class="mt-3 mb-0">Price: ${{ cart_item.product.price }}</p>
+                    <p class="mt-0"><strong>Sub-Total: $ - - -</strong></p>            
+                </div>
+
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="text-end">
+                {% if free_delivery_delta > 0 %}
+                <p>Spend <span class="text-color">${{ free_delivery_delta }}</span> more to have free delivery</p>
+                {% endif %}
+                <p>Delivery: €{{ delivery|floatformat:2 }}</p>
+                <h4 class="mt-4 text-weight-bold"><strong>Order Total: €{{ order_total|floatformat:2 }}</strong></h4>
+                
+            </div>
+            <!-- buttons back/secure checkout -->
+            <div class="text-end mt-5 mb-3">
+                <a href="{% url 'menu' %}" class="btn btn-md btn-custom-normal">
+                    <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+                <a href="" class="btn btn-md btn-custom-accent">
+                    <span class="text-uppercase">Secure Checkout</span>
+                    <span class="icon"><i class="fas fa-shopping-basket"></i></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row justify-content-center gx-1">
+        <div class="col-12 col-md-10 col-lg-8 card-product text-center py-5">
+            <h4 class="mb-4">Your shopping cart is empty.</h4>
+            <a class="btn btn-custom-accent" href="{% url 'menu' %}"><i class="fas fa-list-alt"></i> Go to Menu</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
