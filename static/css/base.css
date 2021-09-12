@@ -56,6 +56,10 @@ a:hover {
     color: var(--color-accent);
 }
 
+.update-link, .remove-item {
+    cursor: pointer;
+}
+
 /* ---------- Navbar ---------- */
 
 .background-nav {
@@ -158,9 +162,13 @@ a:hover {
 /* ---------- Others ---------- */
 
 .sort-options {
-    max-width: 200px;
+    max-width: 180px;
 }
 
 .custom-border {
     border-radius: var(--border-radius-custom);
+}
+
+.simple-text-accent {
+    color: var(--color-accent)
 }

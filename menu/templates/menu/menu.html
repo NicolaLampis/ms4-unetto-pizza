@@ -121,8 +121,8 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <!-- Sort Selector -->    
-    <script type="text/javascript">
+    <!-- Sort Selector -->     
+    <script type="text/javascript">    
         $('#sort-selector').change(function() {
             var selector = $(this);
             var currentUrl = new URL(window.location);
@@ -142,6 +142,6 @@
 
                 window.location.replace(currentUrl);
             }
-        })
+        });    
     </script>
 {% endblock %}
