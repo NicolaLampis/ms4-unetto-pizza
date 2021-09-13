@@ -41,7 +41,7 @@
                 </div>
                 {% endif %}
                 <div class="col-8 col-md-5 pb-2">
-                    <h5><strong>{{ cart_item.product.name }}</strong></h5>
+                    <h5 class="mb-4"><strong>{{ cart_item.product.name }}</strong></h5>
                     <!-- quantity -->
                     <div class="sort-options">
                         <form class="form update-form" method="POST" action="{% url 'update_cart' cart_item.item_id %}">
@@ -70,12 +70,13 @@
                                 </div>
                             </div>
                         </form>
+                        <a class="update-link text-dark" data-toggle="tooltip" data-placement="bottom" title="Update item quantity">
+                            <i class="fas fa-redo fa-sm"></i>
+                            <small>Update</small>
+                        </a>
                     </div>
 
-                    <a class="update-link text-dark" data-toggle="tooltip" data-placement="bottom" title="Update item quantity">
-                        <i class="fas fa-redo fa-sm"></i>
-                        <small>Update</small>
-                    </a>
+                    
                 </div>
                 <!-- delete item / price -->
                 <div class="col-12 col-md-4 text-end card-highlight custom-border pt-2">

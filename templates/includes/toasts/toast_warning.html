@@ -1,0 +1,12 @@
+{% load static %}
+<div class="toast custom-toast shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="w-100 toast-cap bg-warning"></div>
+    <div class="toast-header">
+        <img src="{% static 'images/unetto-favicon16.png' %}" class="rounded me-2" alt="unetto">
+        <strong class="me-auto">Warning!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{ message }}
+    </div>
+</div>
