@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart_tools %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout-style.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container">        
+    <div class="row">
+        <div class="col text-center my-4">
+            <h2>CHECKOUT</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="row">
+            <!-- Order summary -->
+            <div class="col-12 col-md-6 order-md-last my-4">
+                <div class="card-product shadow">
+                    <h2 class="mb-4">Order Summary</h2>
+                    {% if cart_items %}
+                
+                    <div class="table-responsive">
+                        <table id="cart-table" class="table table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col" class="">Product Info</th>
+                                    <th scope="col" class="">Price</th>
+                                    <th scope="col" class="">Qty</th>
+                                    <th scope="col" class="">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for cart_item in cart_items %}
+                                <tr class="table-row {% if forloop.counter|divisibleby:2 %}card-categories{% endif %}">
+                                    <td class="py-3 align-middle">
+                                        <p class="my-0"><strong>{{ cart_item.product.name }}</strong></p>
+                                    </td>
+                                    <td class="py-3 align-middle">
+                                        <p class="my-0">€{{ cart_item.product.price }}</p>
+                                    </td>
+                                    <td class="py-3 align-middle">
+                                        <p class="my-0">{{ cart_item.quantity }}</p>
+                                    </td>
+                                    <td class="py-3 align-middle">
+                                        <p class="my-0"><strong>€{{ cart_item.product.price | calc_subtotal:cart_item.quantity }}</strong></p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="5" class="pt-5 text-right">                                
+                                    <h6 class="light-or-dark-mode-font-color"><strong>Delivery charge: €{{ delivery|floatformat:2 }}</strong></h6>
+                                    <h4 class="light-or-dark-mode-font-color mt-4"><strong>Order Total: €{{ order_total|floatformat:2 }}</strong></h4>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% endif %}
+
+
+                </div>
+            </div>
+
+            <!-- Form user details, delivery, payment -->
+            <div class="col-12 col-md-6 my-4">
+                <form method="POST" action="{% url 'checkout' %}" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="pb-2">
+                        <legend>Details</legend>
+                        {{ order_form.first_name | as_crispy_field }}
+                        {{ order_form.last_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
+                        {{ order_form.telephone | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="pb-2">
+                        <legend>Delivery</legend>                   
+                        {{ order_form.address_line1 | as_crispy_field }}
+                        {{ order_form.address_line2 | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        <div class="form-check form-check-inline">
+                            {% if user.is_authenticated %}
+                                <label class="" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="" type="checkbox" id="id-save-info" name="save-info" checked>
+                            {% else %}
+                                <a class="btn-md btn-custom-normal" href="">Register</a>&nbsp; or 
+                                <a class="btn-md btn-custom-accent" href="">Sign In</a>&nbsp; to save this information
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <fieldset class="pb-2">
+                        <legend class="d-inline w-auto p-2">Payment</legend>
+                        <div id="card-element"></div>
+                    </fieldset>
+                </form>
+                
+            </div>
+        </div>            
+    </div>    
+</div>
+
+{% endblock %}
