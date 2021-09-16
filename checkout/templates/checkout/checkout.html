@@ -72,22 +72,22 @@
                 <form method="POST" action="{% url 'checkout' %}" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="pb-2">
-                        <legend>Details</legend>
+                        <legend class="custom-legend">Details</legend>
                         {{ order_form.first_name | as_crispy_field }}
                         {{ order_form.last_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.telephone | as_crispy_field }}
                     </fieldset>
                     <fieldset class="pb-2">
-                        <legend>Delivery</legend>                   
+                        <legend class="custom-legend">Delivery</legend>                   
                         {{ order_form.address_line1 | as_crispy_field }}
                         {{ order_form.address_line2 | as_crispy_field }}
                         {{ order_form.town_or_city | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
                         <div class="form-check form-check-inline">
                             {% if user.is_authenticated %}
-                                <label class="" for="id-save-info">Save this delivery information to my profile</label>
-                                <input class="" type="checkbox" id="id-save-info" name="save-info" checked>
+                                <label class="custom-legend mb-3" for="id-save-info">Save this delivery information to my profile 
+                                <input type="checkbox" id="id-save-info" name="save-info" checked></label>
                             {% else %}
                                 <a class="btn-md btn-custom-normal" href="">Register</a>&nbsp; or 
                                 <a class="btn-md btn-custom-accent" href="">Sign In</a>&nbsp; to save this information
@@ -95,14 +95,48 @@
                         </div>
                     </fieldset>
                     <fieldset class="pb-2">
-                        <legend class="d-inline w-auto p-2">Payment</legend>
+                        <legend class="custom-legend">Payment</legend>
+                        
                         <div id="card-element"></div>
                     </fieldset>
                 </form>
                 
             </div>
-        </div>            
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+
+
+                <!-- buttons back/secure checkout -->
+            <div class="mt-5 mb-1">
+                <a href="{% url 'view_cart' %}" class="btn btn-lg btn-custom-normal me-3 mb-3">                    
+                    <span class="text-uppercase">Modify Order </span>
+                    <span class="icon"><i class="fas fa-shopping-basket"></i></span>
+                </a>
+                <a href="" class="btn btn-lg btn-custom-accent mb-3">
+                    <span class="text-uppercase">Checkout </span>
+                    <span class="icon"><i class="fab fa-cc-stripe"></i></span>
+                </a>
+            </div>
+            <p class="small simple-text-accent mb-3">
+                <span class="icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </span>
+                <span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
+            </p>
+
+            </div>
+        </div>
     </div>    
 </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 
 {% endblock %}

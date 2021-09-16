@@ -6,9 +6,11 @@
     height: 38px;
     padding: 4px 12px;
     border-radius: 5px;
-    border-color: #df5a0d2d ;
+    border: 2px solid #df5a0d2d;
     background-color: rgba(255, 255, 255, 0.8);
     margin: 12px 0px;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
@@ -23,5 +25,17 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #83919e;
+    color: #93a5b6;
+}
+
+#card-element {
+    color: #000;
+    border: 2px solid #df5a0d2d;
+    padding: 8px 12px;    
+}
+
+.custom-legend {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
 }

@@ -170,3 +170,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Shop delivery variables
 FREE_DELIVERY_THRESHOLD = 12.00
 DELIVERY_CHARGE = 2.00
+
+# Stripe
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')

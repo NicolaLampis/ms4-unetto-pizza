@@ -25,7 +25,7 @@ main {
     min-height: calc(100vh - 104px);
     display: flex;
     align-items: center;
-    background: url('/media/unetto-home.png') no-repeat center center fixed;
+    background: url('/media/unetto-home.png') no-repeat center;
     background-size: cover;
 }
 
