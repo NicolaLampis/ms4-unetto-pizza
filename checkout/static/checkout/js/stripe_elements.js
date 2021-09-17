@@ -1,4 +1,3 @@
-
 /*
     Code adapted from Boutique Ado mini project from CodeInstitute.
     Core logic/payment flow for this comes from here:
@@ -33,18 +32,48 @@ card.mount('#card-element');
 To help your customers catch mistakes, listen to change 
 events on an Element and display any errors.
 */
-card.addEventListener('change', event => {
-    const errorDiv = document.querySelector('#card-errors');
+
+card.addEventListener('change', function (event) {
+    var errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        const html = `
+        var html = `
             <span class="icon" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
+                <i class="fas fa-times"></i>
             </span>
-            <span class="open-sans">${event.error.message}</span>
+            <span>${event.error.message}</span>
         `;
-        errorDiv.innerHTML = html;
+        $(errorDiv).html(html);
     } else {
         errorDiv.textContent = '';
     }
 });
 
+// Handle form submit
+var form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
+  stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+          card: card,
+      }
+  }).then(function(result) {
+        if (result.error) {
+            var errorDiv = document.getElementById('card-errors');
+            var html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+            $(errorDiv).html(html);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});

@@ -16,17 +16,17 @@ def checkout(request):
         return redirect(reverse('menu'))
 
     current_cart = cart_contents(request)
-    total = current_cart['order_total']
+    cart_total = current_cart['order_total']
 
     """
     stripe requires the value as an integer,
     e.g. $15.60 = 1560 zero-decimal currency
     """
-    stripe_total = round(total * 100)
+    stripe_total = round(cart_total * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY
+        currency=settings.STRIPE_CURRENCY,
     )
     print(intent)
 
