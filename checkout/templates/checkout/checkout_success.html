@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout-style.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container">        
+    <div class="row">
+        <div class="col text-center my-4">
+            <h2 class="mb-3">THANK YOU!</h2>
+            <p>Please review your order information below. 
+            <p>A confirmation email will be sent to
+                <strong>{{ order.email }}</strong>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="row">
+           <div class="col-12 col-lg-8 offset-lg-2">
+
+
+           </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 text-center">
+                <a href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week" class="btn btn-lg btn-custom-normal me-3 mb-3">                    
+                    <span class="text-uppercase">Our latest DEALS!</span>
+                    <span class="icon"><i class="fas fa-gifts"></i></span>
+                </a>
+
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

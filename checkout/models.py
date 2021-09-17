@@ -3,6 +3,7 @@ from menu.models import Product
 import uuid
 from django.conf import settings
 from django.db.models import Sum
+from decimal import Decimal
 
 
 class Order(models.Model):
@@ -67,12 +68,12 @@ class Order(models.Model):
         self.order_sub_total = self.orderitems.aggregate(
             Sum('order_item_total')
             )['order_item_total__sum'] or 0
-        if self.order_sub_total < settings.FREE_DELIVERY_THRESHOLD:
+        if Decimal(self.order_sub_total) < Decimal(settings.FREE_DELIVERY_THRESHOLD):
             self.delivery_cost = settings.DELIVERY_CHARGE
         else:
             self.delivery_cost = 0
 
-        self.order_total = self.order_sub_total + self.delivery_cost
+        self.order_total = Decimal(self.order_sub_total) + Decimal(self.delivery_cost)
         self.save()
 
     def save(self, *args, **kwargs):
@@ -106,7 +107,7 @@ class OrderItem(models.Model):
         """
         Override save. Set the order item total and update the order total.
         """
-        self.order_item_total = self.product.price * self.quantity
+        self.order_item_total = Decimal(self.product.price) * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):

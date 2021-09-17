@@ -15,16 +15,17 @@ def cart_contents(request):
     cart = request.session.get('cart', {})
 
     for item_id, quantity in cart.items():
-        product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
-        product_count += quantity
-        cart_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'product': product,
-        })
+        if isinstance(quantity, int):
+            product = get_object_or_404(Product, pk=item_id)
+            total += Decimal(quantity) * product.price
+            product_count += quantity
+            cart_items.append({
+                'item_id': item_id,
+                'quantity': quantity,
+                'product': product,
+            })
 
-    if total < delivery_threshold:
+    if Decimal(total) < Decimal(delivery_threshold):
         delivery = delivery_charge
         free_delivery_delta = Decimal(delivery_threshold) - Decimal(total)
     else:
