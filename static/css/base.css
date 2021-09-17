@@ -5,7 +5,8 @@
     --card-color: rgb(255, 255, 255);
     --card-color-highlight: rgb(230, 225, 200);
     --card-color-categories: rgba(76, 76, 69, 0.1);
-    --color-accent: #DF590D;    
+    --color-accent: #DF590D;
+    --color-light-green: #B9DBCB;
 }
 
 body {
@@ -41,6 +42,10 @@ main {
 
 .simple-text-accent {
     color: var(--color-accent)
+}
+
+.text-lineheight {
+    line-height: 80%;
 }
 
 .favourite {
@@ -192,3 +197,4 @@ a:hover {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+

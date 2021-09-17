@@ -31,7 +31,8 @@ def cart_contents(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-
+    if Decimal(total) == 0:
+        delivery = 0
     order_total = Decimal(delivery) + Decimal(total)
 
     context = {

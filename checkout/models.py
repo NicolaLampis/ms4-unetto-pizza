@@ -72,7 +72,9 @@ class Order(models.Model):
             self.delivery_cost = settings.DELIVERY_CHARGE
         else:
             self.delivery_cost = 0
-
+        if self.order_sub_total == 0:
+            self.delivery_cost = 0
+        
         self.order_total = Decimal(self.order_sub_total) + Decimal(self.delivery_cost)
         self.save()
 
