@@ -57,10 +57,10 @@ form.addEventListener('submit', function(ev) {
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
-  stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-          card: card,
-      }
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
   }).then(function(result) {
         if (result.error) {
             var errorDiv = document.getElementById('card-errors');
