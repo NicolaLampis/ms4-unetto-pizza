@@ -51,9 +51,9 @@
                 <i class="fas fa-shopping-basket"></i>
                 
                 {% if order_total > delivery %}
-                <p class="m-0">${{ order_total }}</p>
+                <p class="m-0">€{{ order_total }}</p>
                 {% else %}
-                <p class="m-0">$0.00</p>
+                <p class="m-0">€0.00</p>
                 {% endif %}             
             </div>
         </a>
