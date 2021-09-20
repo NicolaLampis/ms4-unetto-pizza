@@ -56,6 +56,11 @@ main {
     color: var(--color-accent);    
 }
 
+a.decoration-color:link {
+    background-color: rgba(255, 160, 35, 0.2);
+    text-decoration: underline;    
+}
+
 a {
     color: var(--text-color-dark);
     text-decoration: none;
@@ -198,3 +203,16 @@ a:hover {
     border-top-right-radius: 5px;
 }
 
+/* ---------- allauth/account ---------- */
+
+.form-group {
+    margin: 18px 0px;    
+}
+
+.allauth-form-inner-content input {
+    border-radius: 10px;
+}
+
+.allauth-form-inner-content label {
+    font-weight: 500;
+}

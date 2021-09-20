@@ -19,7 +19,7 @@
         </a>
     </div>
 
-<!-- search -->
+<!-- Search -->
     <div class="d-inline-block order-md-4 dropdown">
       
         <a class="nav-link d-inline-block py-3 link-success" href="#" role="button" id="site-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,12 +44,11 @@
         </ul>
       </div>
 
-<!-- shopping card -->
-        <div class="d-inline-block order-md-5">
+      <!-- Shopping card -->
+      <div class="d-inline-block order-md-5">
         <a class="nav-link d-inline-block py-0 align-top link-success" href="{% url 'view_cart' %}" title="Shopping cart" aria-label="View shopping cart">
             <div class="text-center">
-                <i class="fas fa-shopping-basket"></i>
-                
+                <i class="fas fa-shopping-basket"></i>                
                 {% if order_total > delivery %}
                 <p class="m-0">€{{ order_total }}</p>
                 {% else %}
@@ -57,15 +56,16 @@
                 {% endif %}             
             </div>
         </a>
-        
-    </div>
+      </div>
 
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-lg-0">
+          <!-- Home link -->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
+          <!-- Menu dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{% url 'menu' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Menu
@@ -80,20 +80,32 @@
               <li><a class="dropdown-item" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">Deal</a></li>
             </ul>
           </li>
+          <!-- About Us page -->
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
+          <!-- Contact -->
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          <!-- Account -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Register</a></li>              
+            {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <li><a class="dropdown-item" href=""> <i class="far fa-list-alt"></i>&nbsp; Product Management</a></li>              
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Log In</a></li>
+              {% endif %}
+            <li><a class="dropdown-item" href="{% url 'profile' %}"> <i class="fas fa-user"></i>&nbsp; My Profile</a></li>            
+            <li><a class="dropdown-item" href="{% url 'account_logout' %}"> <i class="fas fa-sign-out-alt"></i>&nbsp; Log Out</a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="{% url 'account_signup' %}"> <i class="fas fa-user-plus"></i>&nbsp; Register</a></li>              
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'account_login' %}"> <i class="fas fa-sign-in-alt"></i>&nbsp; Log In</a></li>
+            {% endif %}              
             </ul>
           </li>          
         </ul>

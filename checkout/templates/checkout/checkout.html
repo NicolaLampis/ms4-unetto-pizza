@@ -84,13 +84,13 @@
                         {{ order_form.address_line2 | as_crispy_field }}
                         {{ order_form.town_or_city | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline ps-0 mb-3">
                             {% if user.is_authenticated %}
                                 <label class="custom-legend mb-3" for="id-save-info">Save this delivery information to my profile 
                                 <input type="checkbox" id="id-save-info" name="save-info" checked></label>
                             {% else %}
-                                <a class="btn-md btn-custom-normal" href="">Register</a>&nbsp; or 
-                                <a class="btn-md btn-custom-accent" href="">Sign In</a>&nbsp; to save this information
+                                <a class="btn btn-sm btn-custom-normal" href="">Register</a>&nbsp; or 
+                                <a class="btn btn-sm btn-custom-normal" href="">Sign In</a>&nbsp; to save this information
                             {% endif %}
                         </div>
                     </fieldset>
