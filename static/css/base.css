@@ -203,14 +203,14 @@ a:hover {
     border-top-right-radius: 5px;
 }
 
-/* ---------- allauth/account ---------- */
+/* ---------- allauth/account form ---------- */
 
 .form-group {
     margin: 18px 0px;    
 }
 
 .allauth-form-inner-content input {
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .allauth-form-inner-content label {
