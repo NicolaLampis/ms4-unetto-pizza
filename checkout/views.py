@@ -7,6 +7,8 @@ from cart.contexts import cart_contents
 from menu.models import Product
 from .models import OrderItem, Order
 from django.views.decorators.http import require_POST
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 import stripe
 import json
 
@@ -96,10 +98,29 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        print(intent)
-
-        order_form = OrderForm()
-
+        
+        """
+        Prefill the form with any info
+        the user have in their profile
+        """
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'first_name': profile.user.first_name,
+                    'last_name': profile.user.last_name,
+                    'email': profile.user.email,
+                    'telephone': profile.default_telephone,
+                    'address_line1': profile.default_address_line1,
+                    'address_line2': profile.default_address_line2,
+                    'town_or_city': profile.default_town_or_city,
+                    'postcode': profile.default_postcode,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
+        
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing. '
                                    'Did you forget to set it in '
@@ -118,9 +139,32 @@ def checkout_success(request, order_number):
     """Handle successful checkouts"""
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    """
+    If user is not authenticated can still perform the payment.
+    If the user is authenticated the order will be attached to
+    the user profile.
+    """
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        # Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        # Save the user's info
+        if save_info:
+            profile_data = {
+                'default_telephone': order.phone_number,
+                'default_address_line1': order.street_address1,
+                'default_address_line2': order.street_address2,
+                'default_town_or_city': order.town_or_city,
+                'default_postcode': order.postcode,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
+        Your order number is {order_number}.' f'A confirmation \
         email will be sent to {order.email}.')
 
     if 'cart' in request.session:

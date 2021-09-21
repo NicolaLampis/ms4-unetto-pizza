@@ -23,7 +23,7 @@
 <div class="container">
     <div class="col-12 col-lg-10 offset-lg-1">
         <div class="row">
-           <div class="col-12 col-lg-8 offset-lg-2">
+           <div class="col-12 col-lg-10 offset-lg-1">
                <div class="card-product text-lineheight shadow p-3 mb-4">
                     <!-- Order Info -->
                     <div class="row">
@@ -166,10 +166,17 @@
 
         <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2 text-center">
+                {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-lg btn-custom-normal me-3 mb-3">
+                    <span class="icon"><i class="fas fa-angle-left"></i></span>               
+                    <span class="text-uppercase">Back To Profile</span>                    
+                </a>
+                {% else %}
                 <a href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week" class="btn btn-lg btn-custom-normal me-3 mb-3">                    
                     <span class="text-uppercase">Our latest DEALS!</span>
                     <span class="icon"><i class="fas fa-gifts"></i></span>
                 </a>
+                {% endif %}
 
             </div>
         </div>

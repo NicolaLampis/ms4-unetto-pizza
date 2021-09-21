@@ -19,3 +19,8 @@
 #id_default_town_or_city option:first-child {
     color: #93a5b6;
 }
+
+.order-history {
+    max-height: 570px; /* height of profile form will match height of order history */
+    overflow-y: auto;
+}

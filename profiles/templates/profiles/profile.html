@@ -21,17 +21,51 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-6">
-            <p>Default Delivery Information</p>
+            <h4 class="mb-4">Default Delivery Information</h4>
             <form action="{% url 'profile' %}" method="POST" id="profile-update-form">                
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button class="btn btn-custom-accent text-uppercase my-3">Update Information</button>                
+                <button class="btn btn-custom-accent text-uppercase mt-3 mb-5">Update Information</button>                
             </form>       
         </div>
 
         <div class="col-12 col-lg-6">
-            <p>Order History</p>
-            {{ orders }}
+            <h4 class="mb-4">Order History</h4>
+            <div class="order-history table-responsive">
+                <table class="table table-sm table-borderless table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Order Total</th>
+                        </tr>                      
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'order_history' order.order_number %}"
+                                    title="{{ order.order_number }}">
+                                    {{ order.order_number|truncatechars:6 }}
+                                </a>
+                            </td>
+                            <td>{{ order.date }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    {% for item in order.orderitems.all %}
+                                    <li class="small">
+                                        {{ item.product.name }} x{{ item.quantity }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>€ {{ order.order_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
        
         </div>
     </div>    
@@ -40,9 +74,7 @@
 
 {% endblock %}
 {% block postloadjs %}
-{{ blocksuper }}
-<script type="text/javascript" src="{% static 'profiles/js/city-fieldselector.js' %}">
-    
-</script>
+{{ block.super }}
+<script type="text/javascript" src="{% static 'profiles/js/city-fieldselector.js' %}"></script>
 
 {% endblock %}
