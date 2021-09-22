@@ -1,0 +1,23 @@
+Hello {{ order.first_name }}!
+
+Confirmation of your order at Unetto. Here your order information:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Delivery: €{{ order.delivery_cost }}
+Order Subtotal: €{{ order.order_sub_total }}
+Order Total: €{{ order.order_total }}
+
+Your order will be shipped to {{ order.address_line1 }} in {{ order.town_or_city }}.
+
+Your default phone number is {{ order.telephone }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Cheers,
+
+Unetto, pizza delivery
+
