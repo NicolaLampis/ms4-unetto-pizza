@@ -1,9 +1,9 @@
 # Code adapted from CI Boutique Ado mini project
 
 from django.http import HttpResponse
-
 from .models import Order, OrderItem
 from menu.models import Product
+from profiles.models import UserProfile
 
 import json
 import time
@@ -42,6 +42,20 @@ class StripeWH_Handler:
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
+        
+        # Update profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            # only update the profile if the save box is checked
+            if save_info:
+                profile.default_telephone = shipping_details.phone
+                profile.default_address_line1 = shipping_details.address.line1
+                profile.default_address_line2 = shipping_details.address.line2
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.save()
 
         # If the order doesn't exist, wait 1 second then retry - repeat 5 times
         order_exists = False
@@ -80,6 +94,7 @@ class StripeWH_Handler:
                 order = Order.objects.create(
                     first_name=first_name,
                     last_name=last_name,
+                    user_profile=profile,
                     email=billing_details.email,
                     telephone=shipping_details.phone,
                     address_line1=shipping_details.address.line1,
