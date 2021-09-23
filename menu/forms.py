@@ -12,24 +12,24 @@ class ProductForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
         category_friendly_names = [
-            (category.id, category.get_friendly_name())
+            (category.id, category.get_frinendly_name())
             for category in categories
         ]
 
         allergens = Allergen.objects.all()
         allergen_friendly_names = [
-            (allergen.id, allergen.get_friendly_name())
+            (allergen.id, allergen.get_allergen_friendly_name())
             for allergen in allergens
         ]
 
         deals = Deal.objects.all()
         deal_friendly_names = [
-            (deal.id, deal.get_friendly_name())
+            (deal.id, deal.get_deal_friendly_name())
             for deal in deals
         ]
 
         self.fields['category'].choices = category_friendly_names
-        self.fields['allergen'].choices = allergen_friendly_names
+        self.fields['allergens'].choices = allergen_friendly_names
         self.fields['deal'].choices = deal_friendly_names
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'allauth-form-inner-content form-group'
+            field.widget.attrs['class'] = 'allauth-form-inner-content'
