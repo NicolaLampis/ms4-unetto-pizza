@@ -3,6 +3,14 @@
         "model": "menu.allergen",
         "pk": 1,
         "fields": {
+            "name": "no_allergen",
+            "friendly_name": "no allergen"            
+        }
+    },
+    {
+        "model": "menu.allergen",
+        "pk": 2,
+        "fields": {
             "name": "milk",
             "friendly_name": "Milk",
             "data_url": "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk"
@@ -10,7 +18,7 @@
     },
     {
         "model": "menu.allergen",
-        "pk": 2,
+        "pk": 3,
         "fields": {
             "name": "eggs",
             "friendly_name": "Eggs",
@@ -19,7 +27,7 @@
     },
     {
         "model": "menu.allergen",
-        "pk": 3,
+        "pk": 4,
         "fields": {
             "name": "fish",
             "friendly_name": "Fish",
@@ -28,7 +36,7 @@
     },
     {
         "model": "menu.allergen",
-        "pk": 4,
+        "pk": 5,
         "fields": {
             "name": "tree_nuts",
             "friendly_name": "Tree Nuts",
@@ -37,7 +45,7 @@
     },
     {
         "model": "menu.allergen",
-        "pk": 5,
+        "pk": 6,
         "fields": {
             "name": "peanuts",
             "friendly_name": "Peanuts",
@@ -46,7 +54,7 @@
     },
     {
         "model": "menu.allergen",
-        "pk": 6,
+        "pk": 7,
         "fields": {
             "name": "wheat",
             "friendly_name": "Wheat",
