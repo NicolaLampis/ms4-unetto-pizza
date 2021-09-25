@@ -29,7 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['unetto-pizza.herokuapp.com', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
