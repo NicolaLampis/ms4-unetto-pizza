@@ -58,8 +58,11 @@ class Order(models.Model):
     order_total = models.DecimalField(
         max_digits=8, decimal_places=2,
         null=False, default=0)
-    original_cart = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    original_cart = models.TextField(
+        null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False,
+        default='')
 
     def _generate_order_number(self):
         """
@@ -81,7 +84,7 @@ class Order(models.Model):
             self.delivery_cost = 0
         if self.order_sub_total == 0:
             self.delivery_cost = 0
-        
+
         self.order_total = Decimal(self.order_sub_total) + Decimal(self.delivery_cost)
         self.save()
 
@@ -116,8 +119,10 @@ class OrderItem(models.Model):
         """
         Override save. Set the order item total and update the order total.
         """
-        self.order_item_total = Decimal(self.product.price) * self.quantity
+        self.order_item_total = Decimal(
+            self.product.price) * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.product.name} on order {self.order.order_number}'
+        return f'{self.product.name} on order \
+            {self.order.order_number}'

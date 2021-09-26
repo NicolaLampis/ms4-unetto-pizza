@@ -17,7 +17,7 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
-    
+
     def _send_confirmation_email(self, order):
         """
         Send the user a completed order confirmation email
@@ -144,7 +144,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        # send confirmation email if the order was just created by the webhook handler
+        # send confirmation email if the order was just created by the webhook handler        
         self._send_confirmation_email(order)
 
         return HttpResponse(
