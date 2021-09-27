@@ -181,6 +181,31 @@ a:hover {
     border-radius: var(--border-radius-custom);
 }
 
+.card-one, .card-two, .card-three, .card-four {
+    width: 100%;
+    height: 200px;
+    background-color: #4b8d6e;
+}
+
+.card-one {    
+    background-color: #F1E5C6;
+    color: #DF590D;
+}
+
+.card-two {    
+    background-color: #DF590D;
+    color: #F1E5C6;
+}
+.card-three {
+    background-color: #B9DBCB;
+    color: #2E6D4B;
+}
+
+.card-four {
+    background-color: #2E6D4B;
+    color: #B9DBCB;
+}
+
 /* ---------- Others ---------- */
 
 .sort-options {
