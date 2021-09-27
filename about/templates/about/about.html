@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<!-- banner site -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $ {{ delivery_threshold }}</h5>                
+        </div>            
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">        
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="display-4 mt-4">                    
+                UNETTO
+            </h2>
+            <h3 class="text-handwrite display-4">
+                pizzeria italiana
+            </h3>
+            <p class="my-3">
+                Delivery in Amsterdam / Utrecht
+            </p>
+        </div>
+    </div>
+    <!-- images and description -->
+    <div class="row">
+        <div class="col-12">
+            <img class="about-image" src="{% static 'images/hand-made.jpg' %}" alt="hand-made">
+            <p class="my-4 text-handwrite-big">Handmade pizza and lasagna, as italian tradition</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <img class="about-image" src="{% static 'images/fresh-ingredients.jpg' %}" alt="fresh ingredients">
+            <p class="my-4 text-handwrite-big">We use only fresh ingredient rich in flavor</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <img class="about-image" src="{% static 'images/oven.jpg' %}" alt="stone oven">
+            <p class="my-4 text-handwrite-big">Our pizza is cooked in a stone oven, for a perfect result</p>
+        </div>
+    </div> 
+    <!-- order button -->
+    <div class="my-4 text-center">
+        <h4>
+            <a href="{% url 'menu' %}" class="btn btn-lg btn-custom-accent text-uppercase py-3">Order Now</a>
+        </h4>
+    </div>
+    
+</div>        
+
+{% endblock %}
