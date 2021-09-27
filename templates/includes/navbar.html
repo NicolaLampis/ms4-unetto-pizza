@@ -20,12 +20,10 @@
     </div>
 
 <!-- Search -->
-    <div class="d-inline-block order-md-4 dropdown">
-      
+    <div class="d-inline-block order-md-4 dropdown">      
         <a class="nav-link d-inline-block py-3 link-success" href="#" role="button" id="site-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-search nav-item"></i>
-        </a>
-      
+        </a>      
         <ul class="dropdown-menu dropdown-menu-end dropdown-search" aria-labelledby="site-search">
           <li>
             <form class="form" method="GET" action="{% url 'menu' %}">
@@ -86,7 +84,7 @@
           </li>
           <!-- Contact -->
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
           </li>
           <!-- Account -->
           <li class="nav-item dropdown">

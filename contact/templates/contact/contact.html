@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<!-- banner site -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $ {{ delivery_threshold }}</h5>                
+        </div>            
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">        
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="display-4 mt-4">                    
+                Contact UNETTO
+            </h2>
+            <h3 class="text-handwrite display-4">
+                pizzeria italiana
+            </h3>
+            <p class="my-3">
+                Delivery in Amsterdam / Utrecht
+            </p>
+        </div>
+    </div>
+    <!-- contact -->
+    <div class="row my-4">
+        <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+            <div class="card-product p-4 text-center shadow">
+                <h3 class="mt-2 mb-4">GET IN TOUCH</h3>
+                <p class="my-1">Have a question or comment?</p>
+                <p class="mt-1 mb-3">We are looking forward to hearing from you or answering any questions you may have. To contact us, please send a message to</p>
+                <a href="mailto:unettopizza@example.com" target="_blank" class="btn btn-custom-accent">unettopizza@example.com</a>
+                <p class="my-3">You can also contact us by phone</p>
+                <p class="mb-3"><i class="fab fa-whatsapp"></i> 555-715271536</p>
+                <hr class="w-50 mx-auto">
+                <h3 class="my-4">SOCIAL MEDIA</h3>
+                <a href="https://www.facebook.com/" class="mx-1" target="_blank"><i class="fab fa-facebook-square fa-3x"></i></a>
+                <a href="https://www.instagram.com/" class="mx-1" target="_blank"><i class="fab fa-instagram fa-3x"></i></a>
+                <hr class="w-50 mx-auto">
+                <h3 class="my-4">LOCATION</h3>
+                <p class="my-auto"><i class="fas fa-map-marker-alt"></i> Rokin street 462, Amsterdam</p>
+                <p class="my-auto"><i class="fas fa-map-marker-alt"></i> Van Gogh street 332, Utrecht</p>
+            </div> 
+        </div>
+    </div>
+</div>        
+
+{% endblock %}
