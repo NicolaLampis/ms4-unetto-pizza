@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<!-- banner site -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $ {{ delivery_threshold }}</h5>                
+        </div>            
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron main-error">        
+        <div class="card-product m-4">
+            <h1 class="display-4 logo-font mt-2">
+                Oops!            
+            </h1>
+            <h4>
+                The page you are looking for might have been removed, had its name changed or is temporarily unavailable.
+            </h4>
+            
+            <div class="mt-4 mb-3">
+                <h4>
+                    <a href="{% url 'menu' %}" class="btn btn-lg btn-custom-accent text-uppercase py-3">Go to Menu</a>
+                </h4>
+            </div>
+        </div>        
+    </div>
+
+{% endblock %}

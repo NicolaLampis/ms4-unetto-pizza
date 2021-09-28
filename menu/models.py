@@ -30,6 +30,7 @@ class Product(models.Model):
         max_digits=5,
         decimal_places=2)
     image = models.ImageField(null=True, blank=True)
+    favourite = models.BooleanField(null=True, blank=True)
     deal = models.ForeignKey(
         'Deal',
         null=True,

@@ -30,6 +30,14 @@ main {
     background-size: cover;
 }
 
+.main-error {
+    min-height: calc(100vh - 104px);
+    display: flex;
+    align-items: center;
+    background: url('/media/unetto-home.png') no-repeat center;
+    background-size: cover;
+}
+
 .text-handwrite, .text-handwrite-big {
     font-family: "Caveat", sans-serif;
 }
@@ -226,7 +234,7 @@ a:hover {
 }
 
 .custom-toast {
-    overflow: scroll;
+    overflow: visible;
     border-radius: 9px;    
 }
 
@@ -290,6 +298,14 @@ a:hover {
 /* ---------- Media Queries ---------- */
 @media only screen and (max-width: 450px) {
     .message-container {
-      max-width: 275px;
+        width: 275px;
+        position: fixed;
+        top: 72px;
+        right: 10px;
+        z-index: 99999999999;
     }
-  }
+
+    .toast {
+        width: 275px !important;
+    }
+}
