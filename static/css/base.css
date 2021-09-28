@@ -226,7 +226,7 @@ a:hover {
 }
 
 .custom-toast {
-    overflow: visible;
+    overflow: scroll;
     border-radius: 9px;    
 }
 
@@ -288,7 +288,7 @@ a:hover {
 }
 
 /* ---------- Media Queries ---------- */
-@media screen and (max-width: 450px) {
+@media only screen and (max-width: 450px) {
     .message-container {
       max-width: 275px;
     }
