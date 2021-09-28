@@ -95,7 +95,7 @@
                                     <i class="fas fa-hashtag"></i>{{ product.category.friendly_name }}                                    
                                 </a>
                                 {% if product.deal.name != "not_a_deal" %}
-                                <a class="text-muted" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">{{ product.deal.name }}</a>
+                                <a class="text-muted" href="{% url 'menu' %}?deal=unetto_deal,special_deal,deal_of_the_week">{{ product.deal.friendly_name }}</a>
                                 {% endif %}
                             </p>
                             {% endif %}

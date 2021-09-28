@@ -233,6 +233,21 @@ I tryed to avoid depth and I used color to diversify the user interaction.
 
 ---
 
+### **Site Construction** ##
+
+#### Topology ####
+
+- User Logged Out
+
+
+
+
+
+
+
+![Data relationship Diagram](readme_media/data-structure.png)
+
+
 ## Testing ##
 
 - Testing information can be found in a separate [TESTING.md](TESTING.md) file.
