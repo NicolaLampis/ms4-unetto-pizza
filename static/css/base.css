@@ -286,3 +286,10 @@ a:hover {
     height: auto;
     object-fit: cover;
 }
+
+/* ---------- Media Queries ---------- */
+@media screen and (max-width: 450px) {
+    .toast {
+      max-width: 275px;
+    }
+  }

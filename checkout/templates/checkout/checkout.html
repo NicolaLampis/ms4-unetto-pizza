@@ -89,8 +89,8 @@
                                 <label class="custom-legend mb-3" for="id-save-info">Save this delivery information to my profile 
                                 <input type="checkbox" id="id-save-info" name="save-info" checked></label>
                             {% else %}
-                                <a class="btn btn-sm btn-custom-normal" href="">Register</a>&nbsp; or 
-                                <a class="btn btn-sm btn-custom-normal" href="">Sign In</a>&nbsp; to save this information
+                                <a class="btn btn-sm btn-custom-normal" href="{% url 'account_signup' %}">Register</a>&nbsp; or 
+                                <a class="btn btn-sm btn-custom-normal" href="{% url 'account_login' %}">Sign In</a>&nbsp; to save this information
                             {% endif %}
                         </div>
                     </fieldset>
@@ -106,11 +106,11 @@
                 
                     <!-- buttons back/secure checkout -->
                     <div class="mt-5 mb-1">
-                        <a href="{% url 'view_cart' %}" class="btn btn-lg btn-custom-normal me-3 mb-3">                    
+                        <a href="{% url 'view_cart' %}" class="btn btn-lg btn-custom-normal me-3 my-3">                    
                             <span class="text-uppercase">Modify Order </span>
                             <span class="icon"><i class="fas fa-shopping-basket"></i></span>
                         </a>
-                        <button class="btn btn-lg btn-custom-accent mb-3" id="submit-button">
+                        <button class="btn btn-lg btn-custom-accent my-3" id="submit-button">
                             <span class="text-uppercase">Checkout </span>
                             <span class="icon"><i class="fab fa-cc-stripe"></i></span>
                         </button>
