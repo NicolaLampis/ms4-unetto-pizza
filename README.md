@@ -166,3 +166,258 @@ I tryed to avoid depth and I used color to diversify the user interaction.
 
 ---
 
+## Technologies ##
+
+### **Languages** ###
+
+- [Python3](https://www.python.org/)
+  - Used to create the main application functionality
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
+  - Used as the main markup language for the website content.
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  - Used to style the individual webpages.
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  - Used to create the interactive functionality of the website
+
+
+### **Database** ###
+
+- [PostgreSQL](https://www.postgresql.org/)
+  - A powerful, open-source object-relational database.
+- [sqlite3](https://www.sqlitetutorial.net/sqlite-python/)
+  - Default database created with Django used for app development on localhost.
+
+### **Libraries / Frameworks** ###
+
+- [Bootstrap5](https://getbootstrap.com/)
+  - Used to design a mobile-first responsive website layout.
+- [Django](https://www.djangoproject.com/)
+  - A high-level Python Web framework.
+- [Django-Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
+  - Python user authentication and login plugin for Django.
+- [Stripe](https://stripe.com/en-gb)
+  - Online payments platform used for the shopping basket functionality.
+- [Green Unicorn (gunicorn)](https://gunicorn.org/)
+  - Python WSGI HTTP Server for Unix used on the Heroku deployment.
+- [psycopg2-binary](https://pypi.org/project/psycopg2-binary/)
+  - PostgreSQL database adapter for Python.
+- [Pillow](https://pillow.readthedocs.io/en/stable/)
+  - Python Image Library image processing capabilities.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+  - AWS SDK for Python (Boto3) used to create, configure, and manage AWS S3 services.
+- [jQuery](https://jquery.com/)
+  - Used for the initialisation of the Bootstrap components functionality and enhance the shopping bag functionality.
+
+### **Tools** ###
+
+- [Git](https://git-scm.com/)
+  - Git was used for version control by utilizing the Gitpod terminal to commit to Git and push to GitHub.
+- [GitHub](https://github.com/)
+  - Used to store, host and deploy the project files and source code after being pushed from Git.
+- [Gitpod](https://www.gitpod.io/)
+  - An online IDE linked to the GitHub repository used for the majority of the code development.
+- [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+  - Used for icons to enhance headings and add emphasis to text.
+- [Heroku](https://www.heroku.com)
+  - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+- [AWS S3](https://aws.amazon.com/s3/)
+  - Amazon Simple Storage Service (Amazon S3) is an object storage service used to store the site static files
+- [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/)
+  - Used to generate new secret keys for environment variables.
+- [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) 
+  - Modify photo, resizing, color correction and exporting for web
+- [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
+  - Used to create the Unetto logo and favicon
+
+[Back to contents](#contents)
+
+---
+
+## Testing ##
+
+- Testing information can be found in a separate [TESTING.md](TESTING.md) file.
+
+[Back to contents](#contents)
+
+---
+
+## Deployment ##
+
+The website was developed using both Gitpod and Visual Studio Code and using Git pushed to GitHub, which hosts the repository. I made the following steps to deploy the site using Heroku:
+
+### **Cloning Unetto** ###
+
+#### **Prerequisites** ###
+
+Ensure the following are installed locally on your computer:
+
+- [Python 3.6 or higher](https://www.python.org/downloads/)
+- [PIP3](https://pypi.org/project/pip/) Python package installer
+- [Git](https://git-scm.com/) Version Control
+
+*Please ensure you have an account created at [Stripe](https://stripe.com/gb) in order to use the online payment processing for the checkout app.*
+
+#### **Cloning the GitHub repository** ####
+
+- navigate to [NicolaLampis/ms4-unetto-pizza](https://github.com/NicolaLampis/ms4-unetto-pizza) GitHub repository.
+- Click the **Code** button
+- **Copy** the clone url in the dropdown menu
+- Using your favourite IDE open up your preferred terminal.
+- **Navigate** to your desired file location.
+
+Copy the following code and input it into your terminal to clone Sportswear-Online:
+
+```Python
+git clone https://github.com/NicolaLampis/ms4-unetto-pizza.git
+```
+
+
+#### **Creation of a Python Virtual Environment** ####
+
+
+*Note: The process may be different depending upon your own OS - please follow this [Python help guide](https://python.readthedocs.io/en/latest/library/venv.html) to understand how to create a virtual environment.*
+
+
+#### **Install the App dependencies and external libraries** ####
+
+- In your IDE terminal window, install the dependencies from the requirements.txt file with the following command:
+
+```Python
+pip3 install -r requirements.txt
+```
+
+
+#### **Create the database in sqlite3** ####
+
+The installaton of the requirements.txt file will initialise the sqlite3 development database locally.
+
+Run the following commands to create the database tables:
+
+- Check there are no changes to the models already configured.
+
+```Python
+python3 manage.py makemigrations --dry-run
+```
+
+- Check which migrations will be applied.
+
+```Python
+python3 manage.py migrate --plan
+
+```
+
+- Apply the migrations.
+
+```Python
+python3 manage.py migrate
+```
+
+Load the fixtures files into the database in the following order:
+
+```Python
+python3 manage.py loaddata categories
+python3 manage.py loaddata deals
+python3 manage.py loaddata allergens
+python3 manage.py loaddata products
+```
+
+#### **Create .env file** ####
+
+- Import and initialise environ in settings.py.
+  - A helpful guide can be found [here](https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f)
+- The .env file should contain at least the following information:
+
+```Python
+DEVELOPMENT=True
+SECRET_KEY=[YOUR SECRET KEY]
+STRIPE_PUBLIC_KEY=[YOUR STRIPE PUBLIC KEY]
+STRIPE_SECRET_KEY=[YOUR STRIPE SECRET KEY]
+STRIPE_WH_SECRET=[YOUR STRIPE WEBHOOK SECRET KEY]
+```
+
+- Please ensure you add in your own `SECRET_KEY`, `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`  and `STRIPE_WH_SECRET` values.
+- The Stripe keys can be found in the Developers section under API Keys and Webhooks of your [Stripe Account](https://stripe.com/gb)
+- ***Important:*** Add the `.env` file to your `.gitignore` file before pushing your files to any public git repository.
+
+
+#### **Run the application locally** ####
+
+- To run the application, enter the following command into the terminal window:
+
+```Python
+python3 manage.py runserver
+```
+
+### **Deploying Unetto web app to Heroku** ###
+
+#### **Creating the Heroku app** ####
+
+*Please ensure you have an account created at [Heroku](https://signup.heroku.com/login) in order to deploy the app.*
+
+- Log in to your Heroku account dashboard and create a new app.
+- Enter the App name.
+- Choose a geographical region closest to where you live.
+
+
+#### **Adding a PostgreSQL database to Heroku** ####
+
+- Select the **Resources** tab on your Heroku app dashboard
+- Select `Heroku Postgres` as a new add-on with a Plan name of `Hobby Dev - Free`
+- Heroku will build the PostgresQL database instance and add a config variable automatically.
+
+
+#### **Load the data into PostgreSQL** ####
+
+- Add the following variable to the `.env` file:
+```Python
+DATABASE_URL=[YOUR POSTGRESQL DATABASE URL FROM HEROKU CONFIG VARS]
+```
+
+- Apply the migrations to the Heroku PostgreSQl database tables.
+
+```Python
+python3 manage.py migrate
+```
+
+- Load the fixtures files into the PostgreSQL database in the following order:
+
+```Python
+python3 manage.py loaddata categories
+python3 manage.py loaddata deals
+python3 manage.py loaddata allergens
+python3 manage.py loaddata products
+```
+
+### **Push your repository to GitHub** ###
+ - In the Heroku App Settings page, open the section Config Vars
+ - Add all the environmant variables from your local `.env` file into the Heroku Config Vars:
+
+| Key | Value |
+| --- | --- |
+| SECRET_KEY | [YOUR SECRET KEY] |
+| STRIPE_PUBLIC_KEY | [YOUR STRIPE PUBLIC KEY] |
+| STRIPE_SECRET_KEY | [YOUR STRIPE SECRET KEY] |
+| STRIPE_WH_SECRET | [YOUR STRIPE WEBHOOK SECRET KEY] |
+| DATABASE_URL | [YOUR POSTGRESQL DATABASE URL] |
+| EMAIL_HOST_PASS | [YOUR GMAIL APP SIGN IN PASSWORD] |
+| EMAIL_HOST_USER | [YOUR ORDER CONFIRMATION EMAIL ADDRESS FROM GMAIL]
+
+
+
+- In the Heroku App Deploy page:
+  - Select GitHub from the Deployment Method options.
+  - Select Connect to GitHub.
+  - Log in to your GitHub account from Heroku to link the App to GitHub.
+  - Search for and select the repository to be linked in GitHub.
+  - Select Connect.
+  - Select Enable Automatic Deployment from the GitHub Master / Main branch.
+
+#### **Launch the app** ####
+
+- Click Open App in Heroku to launch the App in a new browser window.
+
+***Note: The static files served from GitHub will be much slower to load than running locally. It is recommended to copy the static files to an online service such as an AWS S3 Bucket and connect this to Heroku.***
+
+[Back to contents](#contents)
+
+---
