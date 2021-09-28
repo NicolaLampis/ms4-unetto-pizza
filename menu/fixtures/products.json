@@ -5,8 +5,7 @@
         "fields": {
             "category": 1,
             "name": "Margherita",
-            "description": "buffalo mozzarella cheese, red tomatoes, tomato sauce and green basil.",
-            "favourite": true,
+            "description": "buffalo mozzarella cheese, red tomatoes, tomato sauce and green basil.",            
             "price": "6.50",            
             "image": "PPK001.png",
             "allergens": [
@@ -21,8 +20,7 @@
         "fields": {
             "category": 1,
             "name": "Prosciutto",
-            "description": "backed ham, mozzarella cheese, tomato sauce.",
-            "favourite": false,
+            "description": "backed ham, mozzarella cheese, tomato sauce.",            
             "price": "9.00",            
             "image": "PPK002.png",
             "allergens": [
@@ -37,8 +35,7 @@
         "fields": {
             "category": 2,
             "name": "Lasagna Bolognese",
-            "description": "layers of fresh pasta coated in a luxurious mix of hearty ragù bolognese (slow-cooked meat and tomato sauce) and creamy béchamel (white sauce).",
-            "favourite": false,
+            "description": "layers of fresh pasta coated in a luxurious mix of hearty ragù bolognese (slow-cooked meat and tomato sauce) and creamy béchamel (white sauce).",            
             "price": "8.50",
             "image": "LPK003.png",
             "allergens": [
@@ -54,8 +51,7 @@
         "fields": {
             "category": 2,
             "name": "Lasagna Vegetarian",
-            "description": "layers of fresh pasta coated in a mix of tomato sauce, with sweet peppers, eggs, creamy ricotta cheese and shredded cheese.",
-            "favourite": false,
+            "description": "layers of fresh pasta coated in a mix of tomato sauce, with sweet peppers, eggs, creamy ricotta cheese and shredded cheese.",            
             "price": "8.00",
             "image": "LPK004.png",
             "allergens": [
@@ -70,8 +66,7 @@
         "fields": {
             "category": 1,
             "name": "Prosciutto(Family) + Coca Cola",
-            "description": "Pizza Prosciutto(Family Size): backed ham, mozzarella cheese, tomato sauce. A can of Coca Cola",
-            "favourite": false,
+            "description": "Pizza Prosciutto(Family Size): backed ham, mozzarella cheese, tomato sauce. A can of Coca Cola",            
             "price": "13.00",            
             "deal": "2",
             "allergens": [
@@ -86,8 +81,7 @@
         "fields": {
             "category": 3,
             "name": "Coca Cola",
-            "description": "Soft-drink soda, 0,33 cl, calories 140.",
-            "favourite": true,
+            "description": "Soft-drink soda, 0,33 cl, calories 140.",            
             "price": "2.50",
             "image": "DPK006.png" 
         }
@@ -98,8 +92,7 @@
         "fields": {
             "category": 3,
             "name": "Peroni",
-            "description": "Beer, 0.33 cl, ALC 6% VOL",
-            "favourite": false,
+            "description": "Beer, 0.33 cl, ALC 6% VOL",            
             "price": "3.50"            
         }
     },
@@ -109,8 +102,7 @@
         "fields": {
             "category": 3,
             "name": "S'Pellegrino",
-            "description": "Water, 0.33 cl.",
-            "favourite": false,
+            "description": "Water, 0.33 cl.",            
             "price": "1.50",
             "image": "DPK008.png" 
         }
@@ -121,8 +113,7 @@
         "fields": {
             "category": 4,
             "name": "Tiramisu",
-            "description": "rich layered Italian dessert made with delicate ladyfinger cookies, espresso, mascarpone cheese, eggs, sugar, Marsala wine, rum and cocoa powder.",
-            "favourite": true,
+            "description": "rich layered Italian dessert made with delicate ladyfinger cookies, espresso, mascarpone cheese, eggs, sugar, Marsala wine, rum and cocoa powder.",            
             "price": "7.00"           
         }
     },
@@ -132,8 +123,7 @@
         "fields": {
             "category": 4,
             "name": "Cheesecake",
-            "description": "sweet dessert consisting of one layer of cream (cheese, eggs, sugar and lemon) and a bottom layer made from crushed cookies.",
-            "favourite": false,
+            "description": "sweet dessert consisting of one layer of cream (cheese, eggs, sugar and lemon) and a bottom layer made from crushed cookies.",            
             "price": "7.50"            
         }
     }

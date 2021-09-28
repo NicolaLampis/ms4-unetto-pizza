@@ -289,7 +289,7 @@ a:hover {
 
 /* ---------- Media Queries ---------- */
 @media screen and (max-width: 450px) {
-    .toast {
+    .message-container {
       max-width: 275px;
     }
   }
