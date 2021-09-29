@@ -100,38 +100,35 @@ I achieve this by:
 1. As a **shopper**, I want to be able to view a list of products so that I can choose some items to purchase.
 2. As a **shopper**, I want to be able to filter products that I am interested in without searching through all the products.
 3. As a **shopper**, I want to be able to select individual products to see more detailed information and add the item to my shopping cart.
-4. As a **shopper**, I want to be able to see any product special offers, new arrivals and available deals, taking advantage of any reduced prices shown.
-5. As a **shopper**, I want to be able to see items I have placed in my shopping cart easily so that I can keep track oof what I am buying
-6. As a **shopper**, I want to be able to see breadcrumb navigation links to see where I am on the site easily.
+4. As a **shopper**, I want to be able to see items I have placed in my shopping cart, and keep track of what I am buying.
 
 #### Registration and User Accounts ####
 
-7. As a **site user**, I want to be able to register for an account to make future purchases easier
-8. As a **site user**, I want to be able to easily log in and out of my account so that I can access my personal account information
-9. As a **site user**, I want to be able to receive and email requireing me to verify my email account to finish account registeration.
-10. As a **site user**, I want to be able to log in and have a personal profile page containing my delivery details and order history
-11. As a **site user**, I want to be able to save and update my delivery information on my personal profile page.
+5. As a **site user**, I want to be able to register for an account and save persona informations to speed up future purchases
+6. As a **site user**, I want to be able to receive and email to verify my email account and complete the registeration.
+7. As a **site user**, I want to be able to save and update my delivery information on my personal profile page.
+8. As a **site user**, I want to be able to log in and have a personal profile page containing my delivery details and order history
+
 
 #### Sorting and Searching ####
 
-12. As a **shopper**, I want to be able to sort the available products by price, main category, sub-category or product type
-13. As a **shopper**, I want to be able to filter and group products for men, women, unisex or kids.
-14. As a **shopper**, I want to be able to see how many products are available based on the sorting / filtering I have applied
-15. As a **shopper**, I want to be able to search for a product by name, type or category.
+9. As a **shopper**, I want to be able to sort the available products by price, category type and name
+10. As a **shopper**, I want to be able to see the allergens in the food
 
 #### Purchasing and Checkout ####
 
-16. As a **shopper**, I want to be able to easily select the size and qualtity of a product when adding it to the shopping cart
-17. As a **shopper**, I want to be able to view the items in my shopping cart waiting to be purchased, seeing the sub-total, delivery costs and grand total amounts.
-18. As a **shopper**, I want to be able to easily update the items in the shopping cart by changing the quantities of products or remove them from the cart.
-19. As a **shopper**, I want to be able to checkout securely where I can enter my delivery and credit card payment details with confidence.
-20. As a **shopper**, I want to be able to view an order confirmation page as well as receive and email order confirmation once the transaction has succeeded.
+11. As a **shopper**, I want to be able to add a product to the shopping cart and select the quantity 
+12. As a **shopper**, I want to be able to view the items in my shopping cart, seeing the sub-total, delivery costs and total price.
+13. As a **shopper**, I want to be able to update the items in the shopping cart. Change quantities or remove the products from the cart.
+14. As a **shopper**, I want to be able to checkout securely, enter my delivery and credit card payment details with no worries.
+15. As a **shopper**, I want to be able to view the order confirmation, and receive an email order confirmation letting me know the transaction has succeeded.
 
 #### Admin and Store Management ###
 
-21. As a **store owner**, I want to be able to add new products to my store
-22. As a **store owner**, I want to be able to edit / update the current product details and replace the product image file
-23. As a **store owner**, I want to be able to delete a product that is no longer for sale.
+16. As a **store owner**, I want to be able to add new products to my store
+17. As a **store owner**, I want to be able to edit product details, uploads a product image file
+18. As a **store owner**, I want to be able to delete a product that is no longer for sale.
+19. As **Admin**, I want to be able to create and delete categories, deals, list of allergens and products
 
 [Back to contents](#contents)
 
@@ -217,7 +214,7 @@ I tryed to avoid depth and I used color to diversify the user interaction.
 - [Gitpod](https://www.gitpod.io/)
   - An online IDE linked to the GitHub repository used for the majority of the code development.
 - [Font-Awesome](https://fontawesome.com/icons?d=gallery)
-  - Used for icons to enhance headings and add emphasis to text.
+  - Icon library toolkit
 - [Heroku](https://www.heroku.com)
   - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
 - [AWS S3](https://aws.amazon.com/s3/)
@@ -341,13 +338,11 @@ I used the Django provided session-based messages functionality. The messages fr
 
 [Back to contents](#contents)
 
-
 ---
-
 
 ## Testing ##
 
-- Testing information can be found in a separate [TESTING.md](TESTING.md) file.
+- Testing information can be found in a separate [testing.md](testing.md) file.
 
 [Back to contents](#contents)
 
@@ -560,3 +555,35 @@ After the successful deployment, click on **Open App** to view the deployed site
 [Back to contents](#contents)
 
 ---
+
+## Credits ##
+
+### **Inspiration** ##
+
+I used this link for design and layout ideas for pizza website:
+- [dribble.com](https://dribbble.com/tags/pizza_website)
+
+### **Images** ###
+
+Most of the images I used were taken from [unsplash.com](https://unsplash.com/), license free to use.
+Photo by the artist *amirali-mirhashemian*, Pizza photos and homepage
+Photo by the artist *joice-kelly*, Lasgna photos
+Photo by the artist *mink-mingle*, Cheesecake photos
+Photo by the artist *nik-owens*, Pizza and oven photos
+Photo by the artist *juan-manuel-nunez-mendez*, handmaking pizza photos
+Photo by the artist *priscilla-du-preez*, tomatoes photos
+
+
+### **Acknowledgements** ###
+
+- [Code Institute](https://codeinstitute.net/full-stack-software-development-diploma/) Course material - Django Boutique Ado project was source of inspiration
+- [Anna Greaves](https://github.com/AJGreaves) code snippets and README.md format ideas 
+- [Simon Vardy](https://github.com/simonjvardy) code snippets and README.md format ideas
+- [wondrousWebWorks](https://github.com/wondrousWebWorks) code snippets and project ideas
+- [Stack Overflow](https://stackoverflow.com/) safe place for every developers in search of answers
+- [Django documentation](https://docs.djangoproject.com/en/3.2/) widget, models, forms, admin...
+- [W3Schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp) Html and CSS guide
+- [Bootstrap v5](https://getbootstrap.com/docs/5.1/getting-started/introduction/) Guide to use the workframe to built a template
+
+## Disclaimer ##
+This site is intended for **educational purposes** only, is a submission project for Code Institute.
