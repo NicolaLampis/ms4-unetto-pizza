@@ -237,15 +237,112 @@ I tryed to avoid depth and I used color to diversify the user interaction.
 
 #### Topology ####
 
-- User Logged Out
+- User Logged Out    
+![Topology user logged out](readme_media/logout.png)
 
+- User Logged In    
+![Topology user logged in](readme_media/login.png)
 
+- Superuser / Admin Logged In    
+![Topology user Superuser](readme_media/superuser.png)
 
+### **Existing Features** ###
 
+- Navbar
+    - Unetto Icon, and Name logo. 
+    - The Bootstrap Navbar is responsive. For small screen size there is a burger icon that opens the lateral menu.
+    - Search form integrated in the navbar
 
+    - **For visitors** to the site who are not logged in, is available the list of all the food-products and the links for these pages:
+        1. Browse the Menu and all the categories, you can see all products and all single product details page
+        2. Order and purchase your food to the delivery. Email confirmation
+        3. Log In (form -username -password)
+        4. Register (form -username -password -email)
+        5. About page
+        6. Contact Page
 
+    - **For users** who are logged in: 
+        1. Browse the Menu and all the categories, you can see all products and all single product details page
+        2. Order and purchase your food to the delivery. Email confirmation
+        3. Have a personal page in which you can modify your pesonal detail info and see order history
+        4. Log In (form -username -password)
+        5. Register (form -username -password -email)
+        6. About page
+        7. Contact Page
 
+    - **For superusers/admin**
+        - Add/Edit/Delete products, access to the product management page
+        - In the Admin dashboard is possible to add Categories, Deals and list of Allergens too
+
+### **Database Schema** ###
+
+- Data relationship Diagram, database models    
 ![Data relationship Diagram](readme_media/data-structure.png)
+
+#### **Fixtures JSON File creation** ####
+
+- I easily loaded my products, categories, deals and allergens into the database using fixtures JSON files. This method is handy when you need to create or remove large quantity of data, because avoid to manually do it by hand for each element via the site admin page.
+
+---
+
+### **CRUD Functionality** ###
+
+
+| Site Page | Create | Read | Update | Delete |
+| --- | --- | --- | --- | --- |
+| Menu | | All Products | | |
+| Menu | | | | Delete Single Product |
+| Product Detail | | Single Product | | |
+| Product Detail | | | | Delete Single Product |
+| Add Product | Add New Product | | | |
+| Edit Product | | Single Product | | |
+| Edit Product | | | Update Single Product | |
+| Shopping Cart | | All Products | | |
+| Shopping Cart | | | Update Product Quantity (Session) | |
+| Shopping Cart | | | | Remove Product (Session) |
+| Checkout | | All Products | | |
+| Checkout | Create Order | | | |
+| Checkout | Create Order Items | | | |
+| Checkout | | User Delivery Details | | |
+| Checkout | | | Update User Details | |
+| Checkout | | | Update Product Quantity (Session) | |
+| Checkout | | | | Remove Product (Session) |
+| Sign Up | Add New User | | | |
+| Log In | | User Details | | |
+| My Profile | | User Details | | |
+| My Profile | | User's Orders | | |
+| My Profile | | | Update Delivery Details | |
+
+
+### **Messages** ###
+
+I used the Django provided session-based messages functionality. The messages framework allows you to temporarily store messages in one request and retrieve them for display in a subsequent request. Every message is tagged with a specific level that determines its priority (e.g., success, info, warning, or error).
+
+- Errors - messages are displayed within the bootstrap Toast and havea a red border on top
+- Info - messages are displayed within the bootstrap Toast and havea a blue border on top
+- Success - messages are displayed within the bootstrap Toast and havea a green border on top
+- Warning - messages are displayed within the bootstrap Toast and havea a yellow border on top
+
+
+### **Defensive Programming** ###
+
+- Defensive programming is used to prevent "brute force" opening of restricted pages, in order to maintain the site security.
+  - Certain pages are removed from view unless a user is authenticated.
+  - Python views functions are modified by Django `@login_required` decorators to restrict user access to inappropriate pages.
+  - Add/Edit/Remove a products is restricted only to superusers or admins. I ensure this by using if/else conditions to check the user authentication.
+
+### **Future Features** ###
+
+- A system of likes or favorite for each user. Handy for sorting products
+
+- Account user registration using popular social media accounts.
+
+- Add extra ingredients in the selection of products.
+
+[Back to contents](#contents)
+
+
+---
 
 
 ## Testing ##
@@ -256,74 +353,80 @@ I tryed to avoid depth and I used color to diversify the user interaction.
 
 ---
 
+## Version Control ##
+- Version control allows you to keep track of your work and helps you to easily explore the changes you have made.
+- This repository is hosted by **Github** and the workspace is managed with **Gitpod**.
+- Branch **Main** is the dafault branch in Git.
+
+#### Gitpod Workspaces ####
+1. In your GitHub repository click on the Gitpod button to start the workspace.
+2. Gitpod loads the **online IDE editor** window, you are ready to code.
+
+#### Update Repository ####
+- To update the repository inside GitHub, use these commands in the Gitpod terminal
+  1. git add .
+  2. git commit -m "your commit message"
+  3. git push  (default to the master branch)
+
 ## Deployment ##
 
-The website was developed using both Gitpod and Visual Studio Code and using Git pushed to GitHub, which hosts the repository. I made the following steps to deploy the site using Heroku:
+The website was developed using Git pushed to GitHub, which hosts the repository. I deployed the site to Heroku, here the passages:
 
 ### **Cloning Unetto** ###
 
 #### **Prerequisites** ###
 
-Ensure the following are installed locally on your computer:
+Ensure you have installed these locally on your computer:
 
 - [Python 3.6 or higher](https://www.python.org/downloads/)
 - [PIP3](https://pypi.org/project/pip/) Python package installer
 - [Git](https://git-scm.com/) Version Control
 
-*Please ensure you have an account created at [Stripe](https://stripe.com/gb) in order to use the online payment processing for the checkout app.*
+*You will also need a [Stripe](https://stripe.com/gb) account in order to use the payment processing for the checkout app.*
+*An amazon [AWS](https://aws.amazon.com/) account, and a [s3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).*
 
 #### **Cloning the GitHub repository** ####
 
-- navigate to [NicolaLampis/ms4-unetto-pizza](https://github.com/NicolaLampis/ms4-unetto-pizza) GitHub repository.
-- Click the **Code** button
-- **Copy** the clone url in the dropdown menu
+- Navigate to [NicolaLampis/ms4-unetto-pizza](https://github.com/NicolaLampis/ms4-unetto-pizza) GitHub repository.
+- click the Code button, then "download zip" to have a copy stored in you machine. 
+  - Unzip the repository into the chosen folder, open with your favourite IDE.
+- click the Code button, copy the URL.    
+- Having Git installed on your system, you can clone the repository with the following command.
+```
+git clone https://github.com/NicolaLampis/ms4-unetto-pizza
+```
 - Using your favourite IDE open up your preferred terminal.
 - **Navigate** to your desired file location.
 
-Copy the following code and input it into your terminal to clone Sportswear-Online:
-
-```Python
-git clone https://github.com/NicolaLampis/ms4-unetto-pizza.git
-```
-
-
 #### **Creation of a Python Virtual Environment** ####
 
-
-*Note: The process may be different depending upon your own OS - please follow this [Python help guide](https://python.readthedocs.io/en/latest/library/venv.html) to understand how to create a virtual environment.*
-
+*Note: The process may be different depending upon your own OS*
+Use this [Python help guide](https://python.readthedocs.io/en/latest/library/venv.html) to understand how to create a virtual environment.
 
 #### **Install the App dependencies and external libraries** ####
 
-- In your IDE terminal window, install the dependencies from the requirements.txt file with the following command:
+- Install all the dependencies listed in the requirements.txt file. In your IDE terminal window run the following command:
 
-```Python
+```
 pip3 install -r requirements.txt
 ```
 
-
 #### **Create the database in sqlite3** ####
 
-The installaton of the requirements.txt file will initialise the sqlite3 development database locally.
+sqlite3 will be initialized locally after the installaton of the requirements.txt.
 
 Run the following commands to create the database tables:
 
-- Check there are no changes to the models already configured.
-
-```Python
-python3 manage.py makemigrations --dry-run
-```
-
 - Check which migrations will be applied.
 
-```Python
+```
 python3 manage.py migrate --plan
 
 ```
 
 - Apply the migrations.
 
-```Python
+```
 python3 manage.py migrate
 ```
 
@@ -338,19 +441,40 @@ python3 manage.py loaddata products
 
 #### **Create .env file** ####
 
-- Import and initialise environ in settings.py.
-  - A helpful guide can be found [here](https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f)
-- The .env file should contain at least the following information:
+- Setting up the required environment variables can be achieved in two ways.
 
-```Python
-DEVELOPMENT=True
-SECRET_KEY=[YOUR SECRET KEY]
-STRIPE_PUBLIC_KEY=[YOUR STRIPE PUBLIC KEY]
-STRIPE_SECRET_KEY=[YOUR STRIPE SECRET KEY]
-STRIPE_WH_SECRET=[YOUR STRIPE WEBHOOK SECRET KEY]
-```
+  - If you have chosen Visual Studio Code as your IDE, locate the `settings.json` file in the .vscode directory. Navigate to `File`, `Preferences`, `Settings` and  `settings.json` file. Enter the environment variables as follows:
 
-- Please ensure you add in your own `SECRET_KEY`, `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`  and `STRIPE_WH_SECRET` values.
+  ```json
+      "terminal.integrated.env.linux": {
+          "DEVELOPMENT": "True",
+          "SECRET_KEY": "<your key here>",
+          "STRIPE_PUBLIC_KEY": "<your key here>",
+          "STRIPE_SECRET_KEY": "<your key here>",
+          "STRIPE_WH_SECRET": "<your key here>",
+          "AWS_ACCESS_KEY_ID": "<your key here>",
+          "AWS_SECRET_ACCESS_KEY": "<your key here>",
+          "AWS_STORAGE_BUCKET_NAME": "<your bucket name here>",
+      }
+  ```
+
+  - Alternatively, create a file called `env.py` in the root directory of your project.
+  - In the `env.py` file, set your environment variables as follows:
+
+  ```python
+      import os
+      os.environ["AWS_ACCESS_KEY_ID"] = "<your key here>"
+      os.environ["AWS_S3_REGION_NAME"] = "<your AWS S3 region name here>
+      os.environ["AWS_SECRET_ACCESS_KEY"] = "<your key here>"
+      os.environ["AWS_STORAGE_BUCKET_NAME"] = "<your AWS S3 bucket name here>"
+      os.environ["SECRET_KEY"] = "<your secret key here>"
+      os.environ["STRIPE_PUBLIC_KEY"] = "<your key here>"
+      os.environ["STRIPE_SECRET_KEY"] = "<your key here>"
+      os.environ["STRIPE_WH_SECRET"] = "<your key here>"
+      os.environ["DEVELOPMENT"] = "True"
+  ```
+
+- Ensure that your virtual environment is activated
 - The Stripe keys can be found in the Developers section under API Keys and Webhooks of your [Stripe Account](https://stripe.com/gb)
 - ***Important:*** Add the `.env` file to your `.gitignore` file before pushing your files to any public git repository.
 
@@ -363,6 +487,8 @@ STRIPE_WH_SECRET=[YOUR STRIPE WEBHOOK SECRET KEY]
 python3 manage.py runserver
 ```
 
+To access the admin panel, add `/admin` to the end of the app's url in the *browser* and log in using your superuser details
+
 ### **Deploying Unetto web app to Heroku** ###
 
 #### **Creating the Heroku app** ####
@@ -373,13 +499,11 @@ python3 manage.py runserver
 - Enter the App name.
 - Choose a geographical region closest to where you live.
 
-
 #### **Adding a PostgreSQL database to Heroku** ####
 
 - Select the **Resources** tab on your Heroku app dashboard
 - Select `Heroku Postgres` as a new add-on with a Plan name of `Hobby Dev - Free`
 - Heroku will build the PostgresQL database instance and add a config variable automatically.
-
 
 #### **Load the data into PostgreSQL** ####
 
@@ -404,34 +528,34 @@ python3 manage.py loaddata products
 ```
 
 ### **Push your repository to GitHub** ###
- - In the Heroku App Settings page, open the section Config Vars
- - Add all the environmant variables from your local `.env` file into the Heroku Config Vars:
+ - In the Heroku App page, open Settings > Config Vars
+ - Add all the environment variables from your local `.env` file into the Heroku Config Vars:
 
 | Key | Value |
-| --- | --- |
-| SECRET_KEY | [YOUR SECRET KEY] |
-| STRIPE_PUBLIC_KEY | [YOUR STRIPE PUBLIC KEY] |
-| STRIPE_SECRET_KEY | [YOUR STRIPE SECRET KEY] |
-| STRIPE_WH_SECRET | [YOUR STRIPE WEBHOOK SECRET KEY] |
-| DATABASE_URL | [YOUR POSTGRESQL DATABASE URL] |
-| EMAIL_HOST_PASS | [YOUR GMAIL APP SIGN IN PASSWORD] |
-| EMAIL_HOST_USER | [YOUR ORDER CONFIRMATION EMAIL ADDRESS FROM GMAIL]
+--- | ---
+SECRET_KEY | <"your key here">
+STRIPE_PUBLIC_KEY | <"your key here">
+STRIPE_SECRET_KEY | <"your key here">
+STRIPE_WH_SECRET | <"your key here">
+AWS_ACCESS_KEY_ID | <"your key here">
+AWS_SECRET_ACCESS_KEY | <"your key here">
+USE_AWS | "True"
+EMAIL_HOST_PASS | <"your app password as generated by Gmail for example">
+EMAIL_HOST_USER | <"your email address that is used to send emails">
 
-
+Set also your AWS settings in *settings.py*
 
 - In the Heroku App Deploy page:
   - Select GitHub from the Deployment Method options.
   - Select Connect to GitHub.
-  - Log in to your GitHub account from Heroku to link the App to GitHub.
-  - Search for and select the repository to be linked in GitHub.
+  - Log in to your GitHub account from Heroku.
+  - Link the Heroku app to the correct GitHub repository for the project
   - Select Connect.
-  - Select Enable Automatic Deployment from the GitHub Master / Main branch.
-
-#### **Launch the app** ####
-
-- Click Open App in Heroku to launch the App in a new browser window.
-
-***Note: The static files served from GitHub will be much slower to load than running locally. It is recommended to copy the static files to an online service such as an AWS S3 Bucket and connect this to Heroku.***
+  - Select Enable Automatic Deployment from the GitHub Main/Master branch.
+  - Perform a `git push heroku main` to push the project to Heroku for the first time
+  - In Heroku > Activity the build process starts.
+       
+After the successful deployment, click on **Open App** to view the deployed site
 
 [Back to contents](#contents)
 
