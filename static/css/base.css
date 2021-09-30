@@ -36,6 +36,8 @@ main {
     align-items: center;
     background: url('/media/unetto-home.png') no-repeat center;
     background-size: cover;
+    align-items: center;
+    justify-content: center;
 }
 
 .text-handwrite, .text-handwrite-big {
