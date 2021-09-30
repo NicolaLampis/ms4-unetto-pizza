@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<!-- banner site -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 card-highlight text-dark banner-site">
+            <h5 class="my-1">Free delivery on orders over $ {{ delivery_threshold }}</h5>                
+        </div>            
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid main-error">        
+        <div class="card-product m-4 text-center">
+            <h1 class="display-4 logo-font mt-2">
+                500 Server Error            
+            </h1>
+            <h4 class="my-3">
+                Please try again later or feel free to contact us if the problem persist.
+            </h4>
+            
+            <div class="my-3">
+                <h4>
+                    <a href="{% url 'menu' %}" class="btn btn-lg btn-custom-accent text-uppercase py-3">Go to Menu</a>
+                </h4>
+            </div>
+        </div>        
+    </div>
+
+{% endblock %}

@@ -113,6 +113,7 @@ Product without images renders a dummy image instead. Uploaded images are correc
 - Only for superuser. Clicking the **Edit** button redirects the superuser to the Product Management page.
 - Only for superuser. Clicking the **Delete** button opens a modal windows for the delete confirmation. Delete button delete the specific product 
 
+
 ### Profile - user logged in
 - **Update information** button update the form and info of the user
 - The two column are displayed correctly and their responsive behaviour is correct
@@ -126,13 +127,16 @@ Product without images renders a dummy image instead. Uploaded images are correc
 - The table rows have alternating color
 - The orders are all displayed
 
+
 ### Cart
 - Products are displayed correctly, with the right quantity, price and subtotal
 - When **quantity** is being changed the update button will update the new quantity correctly with a success message
 - The **delete** button delete the product from the order correctly with a success message
+- If you digit quantity zero the product will be removed
 - Delivery charge and order total are correct and are displayed correctly
 - Keep shopping button works and redirect to the menu
 - Checkout button opens che checkout page
+
 
 ### Checkout
 - The two column are displayed correctly and their responsive behaviour is correct
@@ -143,21 +147,29 @@ Product without images renders a dummy image instead. Uploaded images are correc
 - Requested fields have an *
 - If the form isn't correct a message inform the user about requested field to be filled in before submit
 - Other imput error messages are displayed correctly
+- Save delivery informations checkbox works correctly
 #### Stripe form
 - The stripe card form is displayed correctly
 - Stripe error message are displayed in red below the input
-- Save delivery informations checkbox works correctly
 #### Order summary
-
+- The table is displayed correctly with all the right info
 
 ### Checkout Success 
-
+- A success message inform the user that the order has been processed correctly. Correct order number shown
+- The page shows all the order info correctly
+- The page shows all the delivery info correctly
+- The page shows all the billing info correctly
+- The long order number can break for small display and is shown correctly without overflow
+- The responsive behaviour changes correctly
+- Our latest deal button redirect correctly to the menu query deals
 
 ### Add - product management
 
 ### Edit - product page
 
 ### Authentication - Allauth pages
+
+### Messages
 
 ## Bugs
 Fixed: ✔️
