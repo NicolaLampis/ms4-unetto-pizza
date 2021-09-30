@@ -164,19 +164,48 @@ Product without images renders a dummy image instead. Uploaded images are correc
 - Our latest deal button redirect correctly to the menu query deals
 
 ### Add - product management
+- When superuser logins, is possible to visit the **product management** page, inside account menu
+- The form is displayed correctly
+- Requested fields have an *
+- If the form isn't correct a message inform the user about requested field to be filled in before submit
+- Other imput error messages are displayed correctly
+- Select multiple allergens using Ctrl works correctly
+- Update image works correctly and shows the name of the new file in red
+- After updating a product the superuser is redirected to the product detail with a success message
+- Cancel button redirect to the menu
+ 
 
 ### Edit - product page
+- Info message infrom the superuser which product is being edited
+- When superuser logins, is possible to go to **Edit** page
+- The form is displayed correctly
+- Requested fields have an *
+- If the form isn't correct a message inform the user about requested field to be filled in before submit
+- Other imput error messages are displayed correctly
+- Select multiple allergens using Ctrl works correctly
+- Update image works correctly and shows the name of the new file in red
+- After updating a product the superuser is redirected to the product detail with a success message
+- Cancel button redirect to the menu
 
 ### Authentication - Allauth pages
+- All the inputs are displayed correctly
+- The actions are correct as expected
+- Links redirect to the right pages
+- Only valid forms are submitted
+- error messages are displayed correctly
+- Style of the templates are displayed correctly
 
 ### Messages
+- Are displayed correctly, media query on small display works correctly
+- Position is correct and also behaviour
+- Long text are displayed correctly without overflows
 
 ## Bugs
 Fixed: ✔️
 Integrity error at /menu/add/
 null value in column "favourite" of relation "menu_product" violates not-null constraint
 
-Adding a new product this bug showed. It started after deleting the favourite field in the Product model.
+Adding a new product this bug showed up. This bug started after deleting the favourite field in the Product model.
 Favourites will be a future features on the app.
 The bug wasn't present in local.
 After reinitializing the heroku app the bug was solved.
