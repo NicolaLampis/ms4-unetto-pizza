@@ -1,5 +1,9 @@
 # UNETTO pizza delivery app
 
+![screenshot](readme_media/unetto_screen.png)
+
+[DEMO](https://unetto-pizza.herokuapp.com/)
+
 Unetto is an interactive e-commerce project for a food delivery pizza shop. This project is a fully functioning interactive application that allow users to order and pay food online.
 
 The site provides all the functionality for a common shopping experience, such as: browsing the menu, providing a shopping cart to save chosen items, have a secure checkout payment and have a personalised emailed message. Backed inside the app there are admin, user and database funtionalities.
